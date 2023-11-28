@@ -1,0 +1,28 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://eysing.com/wp-content/uploads/2023/06/Eysing-PF40-Home.jpg);">
+  <div class="container">
+    <h1><strong>Go electric now</strong> - choose your EV and <strong>ride green</strong> with E-Mobile!</h1>
+    <p>Renting & subscribing to the newest electric vehicles has never been easier.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-3 mb-4">
+
+            <%= link_to "#", class: "product-link" do %>
+              <div class="card card-index position-relative shadow">
+                <img src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg?tx=w_1920,q_auto" class="img-index card-img-top" alt="product">
+                <div class="card-body p-4">
+                  <h5 class="card-title mb-2"><strong><%= product.subject %></strong></h5>
+                  <p class="location card-text"><i class="fa-solid fa-location-dot"></i> <%= product.description %></p>                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
