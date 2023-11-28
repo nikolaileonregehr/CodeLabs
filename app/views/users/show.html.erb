@@ -2,11 +2,44 @@
   <div style="text-align: center; margin-top: 15px; margin-bottom: 25px">
     <h1>My Profile</h1>
   </div>
-    <div class="col-6 card p-4">
-      <h4>Meu email: <%= @user.email %></h4>
-      <p>My name: <%= @user.first_name %></p>
-      <%= link_to "Edit Profile", edit_user_registration_path %>
+  <div class="col-6 board-container card p-4 shadow rounded">
+    <div class="row">
+      <div class="col-12">
+        <div class="board email"><p class="p-profile pb-1">Meu email: <%= @user.email %></p></div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.first_name %></p></div>
+      </div>
+      <div class="col-6">
+        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.last_name %></p></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.address %></p></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.country %></p></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <% if @user.status == "unsubscribed" %>
+          <div class="board red regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
+        <% else %>
+          <div class="board green regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
+        <% end %>
+      </div>
+    </div>
+
+
+    </div>
+    <%= link_to "Edit Profile", edit_user_registration_path %>
+  </div>
 
 
 </div>

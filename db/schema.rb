@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_182422) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.boolean "status", default: false
+    t.string "status", default: "unsubscribed"
     t.string "role"
     t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true
