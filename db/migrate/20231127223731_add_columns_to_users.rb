@@ -3,7 +3,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[7.1]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :address, :string
-    add_column :users, :status, :string
+    add_column :users, :status, :boolean, default: false
     add_column :users, :role, :string
   end
 end

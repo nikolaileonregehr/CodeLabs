@@ -1,3 +1,12 @@
-<div style="text-align: center; margin-top: 15px; margin-bottom: 25px">
-  <h1>My Profile</h1>
+<div class="content row justify-content-center">
+  <div style="text-align: center; margin-top: 15px; margin-bottom: 25px">
+    <h1>My Profile</h1>
+  </div>
+    <div class="col-6 card p-4">
+      <h4>Meu email: <%= @user.email %></h4>
+      <p>My name: <%= @user.first_name %></p>
+      <%= link_to "Edit Profile", edit_user_registration_path %>
+    </div>
+
+
 </div>
