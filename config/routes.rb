@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :favorites, only: [:new, :create]
   end
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
   resources :favorites, only: [:index, :destroy]
 
   get "/profile", to: "users#show"
