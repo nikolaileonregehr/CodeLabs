@@ -23,13 +23,13 @@ product2 = Product.new(subject: "HTML and CSS Basics", description: 'Foundationa
 product2.photo.attach(io: file2, filename: "nes.png", content_type: "image/png")
 product2.save!
 
-file3 = URI.open("https://img.irroba.com.br/fit-in/900x700/filters:format(webp):fill(fff):quality(80)/levbaaia/catalog/e-bike/ebike-preta-lado-alta.jpg")
+file3 = URI.open("https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg?tx=w_1920,q_auto")
 product3 = Product.new(subject: "JavaScript Basics", description: 'Beginner-friendly course introducing the basics of JavaScript, including variables, functions, control flow, and basic DOM manipulation.', duration: "20 hours", level: "Beginner")
 product3.photo.attach(io: file3, filename: "nes.png", content_type: "image/png")
 product3.save!
 
 file4 = URI.open("https://blog.ebaconline.com.br/blog/wp-content/uploads/2023/04/image3-5-e1681758172172.jpg")
-product4 = Product.new(subject: "Manage Databases with SQL", description: 'Introductory course on SQL, focusing on managing and querying relational databases. Covers basic SQL commands and database design.', duration: "25 hours", level: "Beginner")
+product4 = Product.new(subject: "Large Databases & SQL", description: 'Introductory course on SQL, focusing on managing and querying relational databases. Covers basic SQL commands and database design.', duration: "25 hours", level: "Beginner")
 product4.photo.attach(io: file4, filename: "nes.png", content_type: "image/png")
 product4.save!
 
@@ -44,7 +44,7 @@ product6.photo.attach(io: file6, filename: "nes.png", content_type: "image/png")
 product6.save!
 
 file7 = URI.open("https://www.minfytech.com/wp-content/uploads/2023/08/Prompts.png")
-product7 = Product.new(subject: "Prompt Engineering for Analytics", description: 'Course focusing on prompt engineering techniques for analytics and natural language processing, emphasizing effective use of language to generate desired responses from models.', duration: "25 hours", level: "Intermediary")
+product7 = Product.new(subject: "Prompt Engineering Basics", description: 'Course focusing on prompt engineering techniques for analytics and natural language processing, emphasizing effective use of language to generate desired responses from models.', duration: "25 hours", level: "Intermediary")
 product7.photo.attach(io: file7, filename: "nes.png", content_type: "image/png")
 product7.save!
 
@@ -53,18 +53,18 @@ product8 = Product.new(subject: "Intro to OpenAI GPT API", description: 'Introdu
 product8.photo.attach(io: file8, filename: "nes.png", content_type: "image/png")
 product8.save!
 
-file9 = URI.open("https://img.irroba.com.br/fit-in/900x700/filters:format(webp):fill(fff):quality(80)/levbaaia/catalog/e-bike/ebike-preta-lado-alta.jpg")
+file9 = URI.open("https://cyberhoot.com/wp-content/uploads/2022/03/windows-batch-files-1024x512.jpg")
 product9 = Product.new(subject: "Intro to the Command Line", description: 'Beginner-friendly course introducing the basics of the command-line interface, covering commands for navigation, file manipulation, and basic system tasks.', duration: "12 hours", level: "Beginner")
 product9.photo.attach(io: file9, filename: "nes.png", content_type: "image/png")
 product9.save!
 
-file10 = URI.open("https://cyberhoot.com/wp-content/uploads/2022/03/windows-batch-files-1024x512.jpg")
+file10 = URI.open("https://blog.carbonfive.com/wp-content/uploads/2021/10/Matt-Brictson-Interview-Ruby-on-Rails.png")
 product10 = Product.new(subject: "Intro to Ruby on Rails", description: 'Introductory course to Ruby on Rails, covering the basics of MVC architecture, routing, and creating simple web applications using the Ruby programming language.', duration: "25 hours", level: "Beginner")
 product10.photo.attach(io: file10, filename: "nes.png", content_type: "image/png")
 product10.save!
 
 file11 = URI.open("https://www.wilde-it.com/wp-content/uploads/2021/12/bootstrap.jpg")
-product11 = Product.new(subject: "Responsive Web Design with Bootstrap", description: 'Course focused on creating responsive web designs using the Bootstrap framework. Covers the basics of grid systems, components, and responsive navigation.', duration: "10 hours", level: "Beginner")
+product11 = Product.new(subject: "Intro to Bootstrap", description: 'Course focused on creating responsive web designs using the Bootstrap framework. Covers the basics of grid systems, components, and responsive navigation.', duration: "10 hours", level: "Beginner")
 product11.photo.attach(io: file11, filename: "nes.png", content_type: "image/png")
 product11.save!
 
