@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @products = @products.where('subject ILIKE ?', "%#{params[:query]}%") if params[:query].present?
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "products/list", locals: { products: @products }, formats: [:html] }
+    end
   end
 
   def show

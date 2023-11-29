@@ -30,7 +30,7 @@
       <div class="col-12">
         <% if @user.status == "unsubscribed" %>
           <div class="board red regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
-        <% else %>
+        <% elsif @user.status == "subscribed" %>
           <div class="board green regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
         <% end %>
       </div>

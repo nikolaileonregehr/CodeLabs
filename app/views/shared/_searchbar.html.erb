@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-4" data-controller="search-courses">
+    <div class="col-md-4">
       <%= form_with url: products_path, method: :get, html: { data: { search_courses_target: 'form'} } do |form| %>
         <div class="input-group m-3 position-relative">
           <%= form.text_field :query,
            value: params[:query],
            class: 'searchbar form-control rounded-pill custom-placeholder',
            placeholder: 'Find a course',
-           data: { search_courses_target: 'input'} %>
+           data: { search_courses_target: 'input',
+                   action: 'keyup->search-courses#update' }
+          %>
           <div class="position-absolute">
             <%= form.button type: 'submit', class: 'btn rounded-pill p-1' do %>
               <i class="fas fa-search disabled"></i>
