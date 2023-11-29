@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <h1><strong><%= @product.subject %></strong></h1>
+  <p><%= @product.description %></p>
+
+  <div class="row">
+    <h3><strong>Chapters</strong></h3>
+    <ul class="list-group">
+      <% @product.chapters.each do |chapter| %>
+        <li class="list-group-item"><p><strong><%= chapter.title %></strong></p>
+          <p><%= chapter.content %></p>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+</div>

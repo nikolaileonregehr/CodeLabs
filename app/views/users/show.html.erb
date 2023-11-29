@@ -5,7 +5,7 @@
   <div class="col-6 board-container card p-4 shadow rounded">
     <div class="row">
       <div class="col-12">
-        <div class="board email"><p class="p-profile pb-1">Meu email: <%= @user.email %></p></div>
+        <div class="board email"><p class="p-profile pb-1">My email: <%= @user.email %></p></div>
       </div>
     </div>
     <div class="row">
@@ -37,8 +37,8 @@
     </div>
 
 
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
-    <%= link_to "Edit Profile", edit_user_registration_path %>
   </div>
 
 
