@@ -19,7 +19,20 @@
 
 .card {
   border-radius: 5px;
+  height: 500px;
 }
+
 .card-login {
   background-color: white;
+}
+
+.card-carla {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-duration-difficulty {
+  display: flex;
+  justify-content: space-between;
 }

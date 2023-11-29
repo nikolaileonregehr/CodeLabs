@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :chapters, only: [:show]
   end
 
-  get "up" => "rails/health#show", as: :rails_health_check
   get "/profile", to: "users#show"
   # Defines the root path route ("/")
   # root "posts#index"

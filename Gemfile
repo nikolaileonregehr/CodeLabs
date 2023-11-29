@@ -58,7 +58,7 @@ group :development, :test do
 end
 
 # cloudinary gems
-gem "dotenv-rails"
+
 gem "cloudinary"
 
 group :development do
