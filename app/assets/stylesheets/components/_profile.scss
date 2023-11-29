@@ -1,0 +1,35 @@
+.content,.row{height:100%}
+
+.board-container{box-sizing:border-box}
+.board{
+  background-color: #cfd0d0;
+  margin: 3px;
+  border-radius: 10px;
+  padding-top: 8px;
+}
+
+.row-name {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.p-profile {
+  padding-left: 8px;
+}
+
+.email {
+  font-size:22px;
+  font-weight: 500;
+}
+
+.regular-fill {
+  font-size: 18px;
+}
+
+.red {
+  background-color: #FF0000;
+}
+
+.green {
+  background-color: lightgreen;
+}

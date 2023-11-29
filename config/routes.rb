@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
 
   get "up" => "rails/health#show", as: :rails_health_check
-
+  get "/profile", to: "users#show"
   # Defines the root path route ("/")
   # root "posts#index"
 end
