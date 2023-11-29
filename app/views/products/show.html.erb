@@ -1,7 +1,12 @@
 <div class="container mt-4">
   <h1><strong><%= @product.subject %></strong></h1>
   <p><%= @product.description %></p>
-
+  <% thisfavorite = Favorite.find_by(user: current_user, product: @product) %>
+  <% if thisfavorite %>
+    <%= link_to "Remove from Favorites", favorite_path(thisfavorite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger mb-3" %>
+  <% else %>
+    <%= button_to "Add to Favorites", product_favorites_path(@product), class: "btn btn-success mb-3" %>
+  <% end %>
   <div class="row">
     <h3><strong>Chapters</strong></h3>
     <ul class="list-group">
