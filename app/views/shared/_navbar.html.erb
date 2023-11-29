@@ -24,7 +24,7 @@
             </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Profile", profile_path, class: "dropdown-item" %>
-                <%= link_to "My Courses", "#", class: "dropdown-item" %>
+                <%= link_to "My Fav Courses", favorites_path, class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </li>
@@ -38,3 +38,17 @@
     </div>
   </div>
 </div>
+
+
+<%= link_to root_path, class: "navbar-brand" do %>
+<% end %>
+
+<% if user_signed_in? %>
+  <li class="nav-item dropdown">
+    <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.email %></a>
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+    </div>
+  </li>
+<% else %>
+<% end %>

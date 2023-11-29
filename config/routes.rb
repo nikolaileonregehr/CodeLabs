@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   resources :products, only: [:index, :show] do
     resources :chapters, only: [:show]
+    resources :favorites, only: [:new, :create]
   end
+
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
+  resources :favorites, only: [:index, :destroy]
 
   get "/profile", to: "users#show"
   # Defines the root path route ("/")
