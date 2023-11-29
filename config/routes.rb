@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :chapters, only: [:show]
   end
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
   get "/profile", to: "users#show"
   # Defines the root path route ("/")
   # root "posts#index"
