@@ -12,7 +12,7 @@
         <% @products.each do |product| %>
           <div class="col-3 mb-4">
 
-            <%= link_to "#", class: "product-link" do %>
+            <%= link_to product_path(product), class: "product-link" do %>
               <div class="card card-index position-relative shadow">
                 <img src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg?tx=w_1920,q_auto" class="img-index card-img-top" alt="product">
                 <div class="card-body p-4">
