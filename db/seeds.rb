@@ -69,12 +69,18 @@ product8 = Product.new(subject: "Intro to OpenAI GPT API", description: 'Introdu
 product8.photo.attach(io: file8, filename: "nes.png", content_type: "image/png")
 product8.save!
 
+<<<<<<< HEAD
+# Course 9
 file9 = URI.open("https://cyberhoot.com/wp-content/uploads/2022/03/windows-batch-files-1024x512.jpg")
+>>>>>>> master
 product9 = Product.new(subject: "Intro to the Command Line", description: 'Beginner-friendly course introducing the basics of the command-line interface, covering commands for navigation, file manipulation, and basic system tasks.', duration: "12 hours", level: "Beginner")
 product9.photo.attach(io: file9, filename: "nes.png", content_type: "image/png")
 product9.save!
 
+<<<<<<< HEAD
+# Course 10
 file10 = URI.open("https://blog.carbonfive.com/wp-content/uploads/2021/10/Matt-Brictson-Interview-Ruby-on-Rails.png")
+>>>>>>> master
 product10 = Product.new(subject: "Intro to Ruby on Rails", description: 'Introductory course to Ruby on Rails, covering the basics of MVC architecture, routing, and creating simple web applications using the Ruby programming language.', duration: "25 hours", level: "Beginner")
 product10.photo.attach(io: file10, filename: "nes.png", content_type: "image/png")
 product10.save!
