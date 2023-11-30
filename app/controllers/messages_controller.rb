@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  # this needs to be adapted: leave out GPT code as this chat window is with a teacher only
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
