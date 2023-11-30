@@ -1,40 +1,17 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://eysing.com/wp-content/uploads/2023/06/Eysing-PF40-Home.jpg);">
+<%= render 'shared/indexbanner' %>
+
+<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://eysing.com/wp-content/uploads/2023/06/Eysing-PF40-Home.jpg);">
   <div class="container">
     <h1><strong>Go electric now</strong> - choose your EV and <strong>ride green</strong> with E-Mobile!</h1>
     <p>Renting & subscribing to the newest electric vehicles has never been easier.</p>
   </div>
-</div>
+</div> %>
 
 <div class="container">
-  <div class="row mt-4">
+  <div class="row mb-2" data-controller="search-courses">
+    <%= render 'shared/searchbar' %>
     <div class="col-12">
-      <div class="row">
-        <% @products.each do |product| %>
-          <div class="col-3 mb-4">
-
-            <%= link_to product_path(product), class: "product-link" do %>
-              <div class="card card-index position-relative shadow">
-
-              <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 170px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path product.photo.key, height: 300, crop: :fill %>')"></div>
-                <div class="card-body p-4 card-carla">
-                  <div>
-                    <h5 class="card-title mb-4"><strong><%= product.subject %></strong></h5>
-                    <p class="location card-text"> <%= product.description %></p>
-                  </div>
-                  <div class="card-duration-difficulty">
-                    <span>
-                      <i class="fa-regular fa-hourglass-half me-2"></i><%=product.duration%>
-                    </span>
-                    <span>
-                      <i class="fa-solid fa-stairs me-2"></i></i><%=product.level%>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'products/list' %>
     </div>
   </div>
 </div>
