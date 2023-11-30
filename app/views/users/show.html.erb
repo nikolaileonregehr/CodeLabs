@@ -2,6 +2,9 @@
   <div style="text-align: center; margin-top: 15px; margin-bottom: 25px">
     <h1>My Profile</h1>
   </div>
+  <div class="profile-img">
+    <%= image_tag url_for(@user.photo.key), class: "img-fluid rounded-circle", alt: "" %>
+  </div>
   <div class="col-6 board-container card p-4 shadow rounded">
     <div class="row">
       <div class="col-12">
