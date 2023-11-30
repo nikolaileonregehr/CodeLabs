@@ -1,0 +1,27 @@
+#sidebar {
+  width: 300px;
+  height: 80vh;
+  overflow-y: scroll;
+  position: sticky;
+  top: 60px;
+  bottom: 0;
+  background-color: #f0f0f0;
+}
+
+#sidebar ul {
+  padding-top: 10px;
+}
+
+#sidebar li {
+  list-style-type: none;
+  line-height: 45px;
+  padding: 10px;
+}
+
+#sidebar li:hover {
+  background-color: rgba(150, 150, 150, 0.3);
+}
+
+#sidebar li a {
+  text-decoration: none;
+}

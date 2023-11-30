@@ -1,5 +1,13 @@
 class ChaptersController < ApplicationController
-  def chapter_params
-    params.require(:article).permit(:photo)
+  def show
+    set_product
+    @chapters = @product.chapters
+    @current_chapter = params[:id] ? @product.chapters.find(params[:id]) : @chapters.first
+  end
+
+  private
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end

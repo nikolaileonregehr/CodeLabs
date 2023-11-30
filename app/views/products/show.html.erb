@@ -6,6 +6,7 @@
     <%= link_to "Remove from Favorites", favorite_path(thisfavorite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger mb-3" %>
   <% else %>
     <%= button_to "Add to Favorites", product_favorites_path(@product), class: "btn btn-success mb-3" %>
+    <%= link_to "Start Course", product_chapter_path(@product, @product.chapters.first), class: "btn btn-light" %>
   <% end %>
   <div class="row">
     <h3><strong>Chapters</strong></h3>

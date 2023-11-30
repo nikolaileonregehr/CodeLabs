@@ -1,0 +1,31 @@
+<div style="display: flex;">
+
+  <!-- Chapters-->
+  <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3">
+    <h4 class="text-center pt-4"> <%= @product.subject %></h4>
+    <ul class="ps-1">
+      <% @chapters.each do |chapter| %>
+        <li class="ps-4"><%= link_to chapter.title, product_chapter_path(@product, chapter), class: "text-dark" %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- Chapter Content -->
+  <div id="main-content" class="col-9 ms-sm-auto p-2">
+    <h2><%= @current_chapter.title %></h2>
+    <p><%= @current_chapter.content %></p>
+
+    <!-- Buttons -->
+    <div class="chapter-button m-2">
+      <% previous_chapter = @chapters[@chapters.index(@current_chapter) - 1] %>
+      <% next_chapter = @chapters[@chapters.index(@current_chapter) + 1] %>
+      <% if next_chapter %>
+        <%= link_to "Next", product_chapter_path(@product, next_chapter), class: 'btn btn-primary' %>
+      <% end %>
+      <% if @current_chapter != @chapters.first %>
+        <%= link_to "Previous", product_chapter_path(@product, previous_chapter), class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary' %>
+  </div>
+</div>
