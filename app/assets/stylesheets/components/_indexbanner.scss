@@ -1,0 +1,17 @@
+/* Set a fixed height for the images within the cards */
+.carousel-item img {
+  height: 400px; /* Adjust the height as needed */
+  object-fit: cover;
+   /* This property ensures that the image maintains its aspect ratio and covers the entire container */
+}
+
+/* Optional: Adjust the card styles */
+.card {
+  margin-bottom: 20px; /* Add some margin between cards */
+}
+
+/* Optional: Center the carousel controls */
+.carousel-control-prev, .carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
