@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+  resources :gpt_chatrooms, only: :show do
+    resources :gpt_messages, only: :create
+  end
+
   resources :favorites, only: [:index, :destroy]
 
   get "/profile", to: "users#show"
