@@ -30,9 +30,9 @@
   </div>
 
   <div class="product-chapter col-6">
-    <h3 class="ms-3"><strong>Chapters</strong></h3>
     <ul class="list-group">
       <% if user_signed_in? && @user.status == "subscribed" %>
+       <h3 class="ms-3"><strong>Chapters</strong></h3>
         <% @product.chapters.each do |chapter| %>
           <%= link_to product_chapter_path(@product, chapter), class:"chapter-link" do %>
           <div class="">
@@ -43,6 +43,7 @@
           <% end %>
         <% end %>
       <% else %>
+       <h3 class="ms-3"><strong>Chapters</strong></h3>
         <% @product.chapters.each do |chapter| %>
           <li class="list-group-item"><p><strong><%= chapter.title %></strong></p>
             <p><%= chapter.content %></p>
