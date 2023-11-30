@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_215418) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_165353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_215418) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "gpt_chatrooms", force: :cascade do |t|
+    t.string "title"
+    t.bigint "student_id"
+    t.bigint "gpt_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gpt_user_id"], name: "index_gpt_chatrooms_on_gpt_user_id"
+    t.index ["student_id"], name: "index_gpt_chatrooms_on_student_id"
+  end
+
+  create_table "gpt_messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "gpt_chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gpt_chatroom_id"], name: "index_gpt_messages_on_gpt_chatroom_id"
+    t.index ["user_id"], name: "index_gpt_messages_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
@@ -102,7 +122,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_215418) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.string "status"
+    t.string "status", default: "unsubscribed"
     t.string "role"
     t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -116,6 +136,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_215418) do
   add_foreign_key "chatrooms", "users", column: "teacher_id"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
+  add_foreign_key "gpt_chatrooms", "users", column: "gpt_user_id"
+  add_foreign_key "gpt_chatrooms", "users", column: "student_id"
+  add_foreign_key "gpt_messages", "gpt_chatrooms"
+  add_foreign_key "gpt_messages", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
 end
