@@ -37,7 +37,7 @@
           <%= link_to product_chapter_path(@product, chapter), class:"chapter-link" do %>
           <div class="">
             <li class="list-group-item hover-grey"><p><strong><%= chapter.title %></strong></p>
-              <p><%= chapter.content %></p>
+              <p><%= chapter.description %></p>
             </li>
           </div>
           <% end %>
@@ -46,7 +46,7 @@
        <h3 class="ms-3"><strong>Chapters</strong></h3>
         <% @product.chapters.each do |chapter| %>
           <li class="list-group-item"><p><strong><%= chapter.title %></strong></p>
-            <p><%= chapter.content %></p>
+            <p><%= chapter.description %></p>
           </li>
         <% end %>
       <% end %>
