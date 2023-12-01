@@ -1,7 +1,7 @@
-<div class='' style="display: flex;">
-
+<div class='container-fluid'>
+ <div class="row">
   <!-- Chapters-->
-  <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3">
+  <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0">
     <h4 class="text-center pt-4"> <%= @product.subject %></h4>
     <ul class="list-group">
       <% @chapters.each do |chapter| %>
@@ -15,7 +15,7 @@
   </div>
 
   <!-- Chapter Content -->
-  <div id="main-content container" class="" style="width: 68%">
+  <div id="main-content" class="col-9 mx-auto" style="">
     <div class="chapter-button m-2 d-flex justify-content-between m-4" style='height: 40px'>
       <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary', style: 'width: 160px' %>
       <%= link_to "Open chatroom", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
@@ -31,11 +31,12 @@
       </div>
     </div>
 
-    <div class="inside-content m-4 border shadow p-4", style='min-height: 600px'>
+    <div class="inside-content m-2 border shadow p-4", style='min-height: 600px'>
       <h2 class="text-center mb-4"><%= @current_chapter.title %></h2>
       <p><%= @current_chapter.content %></p>
     </div>
 
     <!-- Buttons -->
   </div>
+ </div>
 </div>
