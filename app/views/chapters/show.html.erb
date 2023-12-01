@@ -29,7 +29,12 @@
       <% if @current_chapter != @chapters.first %>
         <%= link_to "Previous", product_chapter_path(@product, previous_chapter), class: 'btn btn-primary' %>
       <% end %>
-      <%= link_to "Open chatroom", gpt_chatrooms_path, data: { "turbo-method": :post } %>
+      <% if @gpt_chatroom  %>
+      <%= link_to "Open chat", gpt_chatroom_path(@gpt_chatroom) %>
+
+      <% else %>
+      <%= link_to "Talk to your AI assistant", gpt_chatrooms_path, data: { "turbo-method": :post } %>
+      <% end %>
     </div>
     <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary' %>
   </div>
