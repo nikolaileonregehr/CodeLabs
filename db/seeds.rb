@@ -8,9 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require "open-uri"
+Chapter.destroy_all
+Favorite.destroy_all
 Product.destroy_all
 Message.destroy_all
+GptMessage.destroy_all
 Chatroom.destroy_all
+GptChatroom.destroy_all
 User.destroy_all
 owner = User.create!(email: "owner@owner.com", password: "123456", role: "teacher", first_name: "Owner", last_name: "owner")
 client = User.create!(email: "user@user.com", password: "123456", role: "student", first_name: "student", last_name: "castro")
