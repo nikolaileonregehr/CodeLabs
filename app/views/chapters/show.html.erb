@@ -18,7 +18,11 @@
   <div id="main-content" class="col-9 mx-auto" style="">
     <div class="chapter-button m-2 d-flex justify-content-between m-4" style='height: 40px'>
       <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary', style: 'width: 160px' %>
-      <%= link_to "Open chatroom", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
+      <% if @gpt_chatroom  %>
+        <%= link_to "Open chat", gpt_chatroom_path(@gpt_chatroom), class: 'btn btn-warning' %>
+      <% else %>
+        <%= link_to "Talk to your AI assistant", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
+      <% end %>
       <div class="next-previous ">
         <% previous_chapter = @chapters[@chapters.index(@current_chapter) - 1] %>
         <% next_chapter = @chapters[@chapters.index(@current_chapter) + 1] %>
@@ -35,8 +39,6 @@
       <h2 class="text-center mb-4"><%= @current_chapter.title %></h2>
       <p><%= @current_chapter.content %></p>
     </div>
-
-    <!-- Buttons -->
   </div>
  </div>
 </div>
