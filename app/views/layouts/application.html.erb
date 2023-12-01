@@ -16,9 +16,11 @@
     <%= render "shared/flashes" %>
     <%= yield %>
   </div>
-  <div class="footer mt-5">
-     <%= render "shared/footer" %>
-  </div>
+  <% unless rendering_show_chapter %>
+    <div class="footer">
+      <%= render "shared/footer" %>
+    </div>
+  <% end %>
   </div>
   </body>
 </html>
