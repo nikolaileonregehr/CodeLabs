@@ -9,6 +9,7 @@
 #   end
 require "open-uri"
 Chapter.destroy_all
+Favorite.destroy_all
 Product.destroy_all
 Message.destroy_all
 GptMessage.destroy_all
