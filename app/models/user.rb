@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  enum role: [:student, :teacher, :gpt_user]
+
 end

@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     resources :favorites, only: [:new, :create]
   end
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:show, :create] do
     resources :messages, only: :create
   end
-
-  resources :gpt_chatrooms, only: :show do
+  post "/gpt_chatrooms", to: "gpt_chatrooms#create"
+  resources :gpt_chatrooms, only: [:show] do
     resources :gpt_messages, only: :create
   end
 
