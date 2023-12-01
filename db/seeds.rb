@@ -9,9 +9,13 @@
 #   end
 require "open-uri"
 Product.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 User.destroy_all
-owner = User.create!(email: "owner@owner.com", password: "123456")
-client = User.create!(email: "user@user.com", password: "123456")
+owner = User.create!(email: "owner@owner.com", password: "123456", role: "teacher", first_name: "Owner", last_name: "owner")
+
+client = User.create!(email: "user@user.com", password: "123456", role: "student", first_name: "student", last_name: "castro")
+User.create!(email: "gpt@gpt.com", password: "123456", role: "gpt_user", first_name: "ChatGPT", last_name: "ChatGPT")
 
 # Courses
 # Course 1

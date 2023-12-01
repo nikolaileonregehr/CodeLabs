@@ -25,6 +25,7 @@
       <% if @current_chapter != @chapters.first %>
         <%= link_to "Previous", product_chapter_path(@product, previous_chapter), class: 'btn btn-primary' %>
       <% end %>
+      <%= link_to "Open chatroom", gpt_chatrooms_path, data: { "turbo-method": :post } %>
     </div>
     <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary' %>
   </div>
