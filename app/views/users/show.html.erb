@@ -1,9 +1,13 @@
 <div class="content row justify-content-center">
-  <div style="text-align: center; margin-top: 15px; margin-bottom: 25px">
+  <div style="text-align: center; margin-top: 15px; margin-bottom: 20px">
     <h1>My Profile</h1>
   </div>
-  <div class="profile-img">
-    <%= image_tag url_for(@user.photo.key), class: "img-fluid rounded-circle", alt: "" %>
+  <div class="profile-img text-center">
+  <% if @user.photo.key %>
+    <%= cl_image_tag @user.photo.key, class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture" %>
+  <% else %>
+    <%= image_tag "default_image.webp", class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture"  %>
+  <% end %>
   </div>
   <div class="col-6 board-container card p-4 shadow rounded">
     <div class="row">
