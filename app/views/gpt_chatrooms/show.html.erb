@@ -1,11 +1,11 @@
 <%= link_to "Talk to a teacher", chatrooms_path, data: { "turbo-method": :post } %>
 <div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @gpt_chatroom.id %>"
+  data-controller="gpt-chatroom-subscription"
+  data-gpt-chatroom-subscription-chatroom-id-value="<%= @gpt_chatroom.id %>"
 >
   <h1>#<%= @gpt_chatroom.student.first_name%> + <%= @gpt_chatroom.gpt_user.first_name %></h1>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
+  <div class="messages" data-gpt-chatroom-subscription-target="messages">
     <% @gpt_chatroom.gpt_messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
