@@ -1,15 +1,19 @@
-<div>
-  <div class="banner m-0" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://wearetechwomen.com/wp-content/uploads/2021/09/shutterstock_1687431796.jpg')">
+<div class="w-100">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://wearetechwomen.com/wp-content/uploads/2021/09/shutterstock_1687431796.jpg')">
     <div class="container p-4">
       <h1>Have the most time-efficient with our lectures.</h1>
       <p>Choose what language you want to learn with our dynamic teaching.</p>
       <%= link_to "See all courses", products_path, class:"btn apply" %>
     </div>
   </div>
+
+
+
+
   <div class="container">
     <div class="lading-page-content">
       <h3 class="text-center m-5">Why <strong class="codelabs">Code Labs</strong> ?</h3>
-      <div class="features">
+      <div class="features m-3">
         <ul class="list-unstyled d-flex justify-content-around">
           <li class="text-center">
             <i class="fa-solid fa-code fa-3x mb-3"></i>
@@ -28,18 +32,19 @@
           </li>
         </ul>
       </div>
-        <div class="mb-5 mt-5 text-center">
-          <h2>MEET OUR MONTHLY SUBSCRIPTIONS</h2>
-          </div>
+      <div class="mb-5 mt-5 text-center">
+        <h2>MEET OUR MONTHLY SUBSCRIPTIONS</h2>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="container">
   <div class="row mb-3 mt-5 text-center justify-content-center">
-    <div class="col-4">
+    <div class="col-md-6 col-lg-4 col-12">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
-          <h5 class="my-0 fw-normal">Standart</h5>
+          <h5 class="my-0 fw-normal">Standard</h5>
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
@@ -49,23 +54,24 @@
             <li>Access to AI assistant</li>
           </ul>
           <%= link_to "Subscribe", new_user_registration_path, class: "w-100 btn btn-lg btn-primary" %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-4">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h5 class="my-0 fw-normal">Premium</h5>
-      </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$25<small class="text-body-secondary fw-light">/mo</small></h1>
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Access to all courses</li>
-                <li>Unlimited questions to the teacher</li>
-                <li>Access to AI assistant</li>
-              </ul>
-              <%= link_to "Subscribe", new_user_registration_path, class: "w-100 btn btn-lg btn-primary" %>
-            </div>
+    <div class="col-md-6 col-lg-4 col-12">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h5 class="my-0 fw-normal">Premium</h5>
         </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$25<small class="text-body-secondary fw-light">/mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Access to all courses</li>
+            <li>Unlimited questions to the teacher</li>
+            <li>Access to AI assistant</li>
+          </ul>
+          <%= link_to "Subscribe", new_user_registration_path, class: "w-100 btn btn-lg btn-primary" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
