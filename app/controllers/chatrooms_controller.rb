@@ -2,14 +2,12 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
-  end
 
-  def create
-    @chatroom = Chatroom.new
-    @chatroom.student_id = current_user.id
-    teacher_id = User.where(role: "teacher").sample.id
-    @chatroom.teacher_id = teacher_id
-    @chatroom.save
-    redirect_to chatroom_path(@chatroom)
+
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "shared/chats", locals: {chats: @chatroom}, formats: [:html] }
+    end
   end
 end
