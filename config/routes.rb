@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:show, :create] do
     resources :messages, only: :create
   end
+
   post "/gpt_chatrooms", to: "gpt_chatrooms#create"
   resources :gpt_chatrooms, only: [:show] do
     resources :gpt_messages, only: :create
@@ -23,4 +24,6 @@ Rails.application.routes.draw do
   get "/profile", to: "users#show"
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "/chats", to: "chatoverview#index"
 end
