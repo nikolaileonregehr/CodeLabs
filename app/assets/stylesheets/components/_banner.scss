@@ -2,6 +2,7 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
+  border-radius: 7px;
 }
 
 .banner h1 {
@@ -15,6 +16,22 @@
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .7;
+  opacity: .8;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.apply {
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: #110B41;
+  color: white;
+  padding: 10px;
+}
+
+.apply:hover {
+  background-color: #5285F4;
+}
+
+.codelabs {
+  color: #103b98
 }
