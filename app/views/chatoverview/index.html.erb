@@ -1,56 +1,44 @@
-<div class="container mt-4">
-  <div class="head-product mb-5">
-    <h1><strong></strong></h1>
-    <p></p>
-  </div>
-  <div class="row">
-  <div class="img-text col-6">
-    <div class="product-image mb-3">
-      <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 340px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @product, height: 2000, crop: :fill %>')"></div>
-    </div>
-    <div class="product-text d-flex">
-      </div>
-      <div class="login-study d-flex justify-content-center">
-        <% if !user_signed_in? %>
-          <%= link_to "Login", new_user_session_path, class: "btn btn-dark" %>
-        <% else %>
-        <% if @product.chapters.exists? && @user.status == "subscribed" %>
-          <div class="studying me-3"> <%= link_to "Start Studying", product_chapter_path(@product, @product.chapters.first), class: "btn btn-info" %> </div>
-        <% end %>
-          <div class="favorite">
-            <% thisfavorite = Favorite.find_by(user: current_user, product: @product) %>
-            <% if thisfavorite %>
-              <%= link_to "Remove from Favorites", favorite_path(thisfavorite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger mb-3" %>
-            <% else %>
-              <%= button_to "Add to Favorites", product_favorites_path(@product), class: "btn btn-success mb-3" %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-  </div>
-
-  <div class="product-chapter col-6">
+<div class='container-fluid'>
+ <div class="row">
+  <!-- Chapters-->
+  <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0">
+    <h4 class="text-center pt-4"> <%= @product.subject %></h4>
     <ul class="list-group">
-      <% if user_signed_in? && @user.status == "subscribed" %>
-       <h3 class="ms-3"><strong>Chapters</strong></h3>
-        <% @product.chapters.each do |chapter| %>
-          <%= link_to product_chapter_path(@product, chapter), class:"chapter-link" do %>
-          <div class="">
-            <li class="list-group-item hover-grey"><p><strong><%= chapter.title %></strong></p>
-              <p><%= chapter.description %></p>
-            </li>
-          </div>
-          <% end %>
-        <% end %>
-      <% else %>
-       <h3 class="ms-3"><strong>Chapters</strong></h3>
-        <% @product.chapters.each do |chapter| %>
-          <li class="list-group-item"><p><strong><%= chapter.title %></strong></p>
-            <p><%= chapter.description %></p>
+      <% @chapters.each do |chapter| %>
+        <%= link_to product_chapter_path(@product, chapter), class:"text-dark" do %>
+          <li class="ps-4 list-group-item">
+            <p class="chapter-title" ><%= chapter.title %></p>
           </li>
         <% end %>
       <% end %>
     </ul>
   </div>
+
+  <!-- Chapter Content -->
+  <div id="main-content" class="col-9 mx-auto" style="">
+    <div class="chapter-button m-2 d-flex justify-content-between m-4" style='height: 40px'>
+      <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary', style: 'width: 160px' %>
+      <% if @gpt_chatroom  %>
+        <%= link_to "Open chat", gpt_chatroom_path(@gpt_chatroom), class: 'btn btn-warning' %>
+      <% else %>
+        <%= link_to "Talk to your AI assistant", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
+      <% end %>
+      <div class="next-previous ">
+        <% previous_chapter = @chapters[@chapters.index(@current_chapter) - 1] %>
+        <% next_chapter = @chapters[@chapters.index(@current_chapter) + 1] %>
+        <% if @current_chapter != @chapters.first %>
+          <%= link_to "Previous", product_chapter_path(@product, previous_chapter), class: 'btn btn-primary', style: 'width: 90px' %>
+        <% end %>
+        <% if next_chapter %>
+          <%= link_to "Next", product_chapter_path(@product, next_chapter), class: 'btn btn-primary', style: 'width: 90px' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="inside-content m-2 border shadow p-4", style='min-height: 600px'>
+      <h2 class="text-center mb-4"><%= @current_chapter.title %></h2>
+      <p><%= @current_chapter.content %></p>
+    </div>
   </div>
+ </div>
 </div>
