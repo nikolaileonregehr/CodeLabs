@@ -1,0 +1,36 @@
+<div class='container-fluid' data-controller="chats-overview">
+  <div class="row">
+    <!-- Sidebar -->
+    <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0">
+      <h4 class="text-center pt-4">Chat overview</h4>
+      <ul class="list-group">
+        <% @chats.each do |n| %>
+          <li class="ps-2 list-group-item d-flex justify-content-between" data-chatroom-id="<%=n.id%>" data-action="click->chats-overview#revealContent">
+            <div class="text-left">
+              <p class="mb-0">Chat <%= n.id %></p>
+              <p class="small text-muted mb-0">Student ID: <%= n.student_id %></p>
+            </div>
+            <div class="text-right">
+              <p class="mb-0 chat-time"><%= n.updated_at.strftime('%H:%M') %></p>
+              <p class="small text-muted mb-0"><%= n.updated_at.strftime('%Y-%m-%d') %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- Chatroom on the right -->
+    <div class="col-9">
+      <%# added for chats card %>
+      <i class="caret-down"></i>
+      <p class="d-none"></p>
+      <%# added for chats card %>
+      <div data-chats-overview-target="content">
+        <% if @chatroom.present? %>
+        <% else %>
+          <p>No chatroom selected</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
