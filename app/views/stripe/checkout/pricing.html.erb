@@ -1,0 +1,15 @@
+<% @prices.each do |price| %>
+  <%= price.product.name %>
+  <%= price.currency %>
+  <%= price.unit_amount/100 %>
+  <%= price.recurring.interval %>
+  <%= button_to 'Subscribe', stripe_checkout_path(price_id: price.id), data: {turbo: 'false'} %>
+<% end %>
+<%= button_to 'Billing Portal', stripe_billing_portal_path, data: {turbo: 'false'} %>
+
+<hr>
+
+<%= current_user.plan %>
+<%= current_user.subscription_status %>
+<%= current_user.subscription_status %>
+<%= current_user.stripe_customer_id  %>
