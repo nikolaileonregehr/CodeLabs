@@ -1,9 +1,7 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Lato:wght@300&display=swap');
-
-// Define fonts for body and headers
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,300&family=Lato:wght@300&display=swap');
 $body-font: "JetBrains Mono", "monospace";
-$headers-font: "Lato", "sans-serif";
+$headers-font: "Lato", "sans-serif"
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
