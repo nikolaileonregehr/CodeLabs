@@ -4,7 +4,7 @@
     <p><%= @product.description %></p>
   </div>
   <div class="row">
-  <div class="img-text col-6">
+  <div class="img-text col-md-6">
     <div class="product-image mb-3">
       <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 340px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @product.photo.key, height: 2000, crop: :fill %>')"></div>
     </div>
@@ -29,7 +29,7 @@
       </div>
   </div>
 
-  <div class="product-chapter col-6">
+  <div class="product-chapter col-md-6">
     <ul class="list-group">
       <% if user_signed_in? && @user.status == "subscribed" %>
        <h3 class="ms-3"><strong>Chapters</strong></h3>
