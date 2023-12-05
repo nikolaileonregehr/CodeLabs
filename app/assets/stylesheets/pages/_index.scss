@@ -1,2 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "favorites_index";
+
+@media (max-width: 425px) {
+  .card_index {
+    width: 25rem;
+  }
+}

@@ -8,4 +8,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:article).permit(:photo)
   end
+
+  def chats
+    @chats = Chatroom.where(student: current_user)
+  end
+
 end

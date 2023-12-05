@@ -1,44 +1,71 @@
-<div class='container-fluid'>
- <div class="row">
-  <!-- Chapters-->
-  <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0">
-    <h4 class="text-center pt-4"> <%= @product.subject %></h4>
-    <ul class="list-group">
-      <% @chapters.each do |chapter| %>
-        <%= link_to product_chapter_path(@product, chapter), class:"text-dark" do %>
-          <li class="ps-4 list-group-item">
-            <p class="chapter-title" ><%= chapter.title %></p>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
+<div class="toggle-sidebar" data-controller="togglesidebar">
+  <div id="sidebar-toggle-button" data-togglesidebar-target="collapsebtn" data-action="click->togglesidebar#toggleSidebar">
+    <i class="fa-solid fa-chevron-left"></i>
   </div>
 
-  <!-- Chapter Content -->
-  <div id="main-content" class="col-9 mx-auto" style="">
-    <div class="chapter-button m-2 d-flex justify-content-between m-4" style='height: 40px'>
-      <%= link_to "Back to Course", product_path(@product), class: 'btn btn-primary', style: 'width: 160px' %>
-      <% if @gpt_chatroom  %>
-        <%= link_to "Open chat", gpt_chatroom_path(@gpt_chatroom), class: 'btn btn-warning' %>
-      <% else %>
-        <%= link_to "Talk to your AI assistant", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
-      <% end %>
-      <div class="next-previous ">
-        <% previous_chapter = @chapters[@chapters.index(@current_chapter) - 1] %>
-        <% next_chapter = @chapters[@chapters.index(@current_chapter) + 1] %>
-        <% if @current_chapter != @chapters.first %>
-          <%= link_to "Previous", product_chapter_path(@product, previous_chapter), class: 'btn btn-primary', style: 'width: 90px' %>
-        <% end %>
-        <% if next_chapter %>
-          <%= link_to "Next", product_chapter_path(@product, next_chapter), class: 'btn btn-primary', style: 'width: 90px' %>
-        <% end %>
+  <div class='container-fluid'>
+    <div class="row">
+      <!-- Chapters-->
+      <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0" data-togglesidebar-target="sidebar" >
+        <div class="chapters-navlink" data-togglesidebar-target="chaptersidebar">
+          <div class="chapter-title">
+            <h4 class="text-center pt-4"> <%= @product.subject %></h4>
+          </div>
+          <ul class="list-group">
+            <% @chapters.each do |chapter| %>
+              <%= link_to product_chapter_path(@product, chapter), class:"text-dark" do %>
+                <li class="ps-4 list-group-item">
+                  <p class="chapter-title" ><%= chapter.title %></p>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+  <!-- Chapters buttons -->
+      <div id="main-content" class="col-9 mx-auto" data-togglesidebar-target="chaptercontent">
+        <div class="chapter-button m-2 d-flex justify-content-between m-4" style='height: 40px'>
+          <div class="course-navlink">
+            <%= link_to product_path(@product), class: "course-navbtn" do %>
+              <p><i class="fa-solid fa-backward-step"></i>  Back to Course</p>
+            <% end %>
+          </div>
+
+          <% if @gpt_chatroom  %>
+            <%= link_to "Open chat", gpt_chatroom_path(@gpt_chatroom), class: 'btn btn-warning' %>
+          <% else %>
+            <%= link_to "Talk to your AI assistant", gpt_chatrooms_path, data: { "turbo-method": :post }, class: 'btn btn-warning' %>
+          <% end %>
+          <div class="course-navlink">
+            <% previous_chapter = @chapters[@chapters.index(@current_chapter) - 1] %>
+            <% next_chapter = @chapters[@chapters.index(@current_chapter) + 1] %>
+
+            <% if @current_chapter != @chapters.first %>
+              <%= link_to product_chapter_path(@product, previous_chapter), class: "course-navbtn" do %>
+                <p><i class="fa-solid fa-backward"></i>  Previous</p>
+              <% end %>
+            <% end %>
+
+            <% if next_chapter %>
+              <%= link_to product_chapter_path(@product, next_chapter), class: "course-navbtn"  do %>
+                <p>Next  <i class="fa-solid fa-forward"></i></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+    <!-- Chapters content -->
+        <div class="inside-content m-2 border shadow p-4", style='min-height: 600px'>
+          <h2 class="text-center"><%= @current_chapter.title %></h2>
+          <div class="text-container">
+            <p class="d-flex justify-content-center"><%= @current_chapter.content.html_safe %></p>
+          </div>
+          <div class="d-flex justify-content-center">
+            <iframe width="1080" height="576" src='https://www.youtube.com/embed/<%= @current_chapter.video_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="inside-content m-2 border shadow p-4", style='min-height: 600px'>
-      <h2 class="text-center mb-4"><%= @current_chapter.title %></h2>
-      <p><%= @current_chapter.content %></p>
-    </div>
   </div>
- </div>
 </div>

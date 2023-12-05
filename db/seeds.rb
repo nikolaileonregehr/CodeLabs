@@ -29,12 +29,51 @@ product1.save!
 product1.reload
 
 #Course 1 - Chapters
-chapter1 = Chapter.create!(title: "Introduction to Python", description: "This chapter covers the basics of Python.", product: product1)
-chapter1.update!(content: "Welcome to the world of Python! In this chapter, we introduce the basics of the Python programming language.")
-chapter2 = Chapter.create!(title: "Python Variables", description: "Learn about variables in Python.", product: product1)
-chapter3 = Chapter.create!(title: "Data Types in Python", description: "Explore different data types in Python, such as strings, numbers, and lists.", product: product1)
-chapter4 = Chapter.create!(title: "Control Structures in Python", description: "Understand control structures like loops and conditional statements in Python.", product: product1)
-chapter5 = Chapter.create!(title: "Basic Functions in Python", description: "Learn the basics of defining and using functions in Python.", product: product1)
+chapter1 = Chapter.create!(title: "Introduction to Python", description: "This chapter covers the basics of Python.", product: product1, video_id: "kqtD5dpn9C8")
+chapter1.update!(content:
+  "<p>Welcome to the world of <strong>Python</strong>! Python is a versatile and powerful programming language known for its readability and ease of use. In this chapter, we embark on a journey to explore the fundamental concepts and syntax of the Python programming language.</p>
+
+  <p>We'll cover the basic structure of a Python program, including variables, data types, and the importance of indentation. By the end of this chapter, you'll have a solid foundation to start writing your own Python scripts and programs.</p>
+
+  <p>Whether you're a beginner or an experienced programmer, understanding the basics of Python is essential for building a strong programming skillset. Let's dive into the world of Python programming together!</p>"
+)
+
+chapter2 = Chapter.create!(title: "Python Variables", description: "Learn about variables in Python.", product: product1, video_id: "cQT33yu9pY8")
+chapter2.update!(content:
+  "<p>In this chapter, we explore the concept of <strong>variables</strong> in <strong>Python</strong>. Variables are like containers that allow you to store and manage data in your programs. Understanding how to work with variables is a fundamental skill for any Python developer.</p>
+
+  <p>We'll cover variable naming conventions, data assignment, and the different data types that variables can hold. By the end of this chapter, you'll be comfortable creating and manipulating variables, a skill crucial for more advanced Python programming.</p>
+
+  <p>Get ready to grasp the core concepts of variables and take your first steps towards becoming a proficient Python programmer!</p>"
+)
+
+chapter3 = Chapter.create!(title: "Data Types in Python", description: "Explore different data types in Python, such as strings, numbers, and lists.", product: product1, video_id: "ppsCxnNm-JI")
+chapter3.update!(content:
+  "<p>Embark on a journey into the diverse world of <strong>data types</strong> in <strong>Python</strong>. Data types are the building blocks of any programming language, and Python provides a rich set of them. In this chapter, we'll explore essential data types such as <strong>strings</strong>, <strong>numbers</strong>, and <strong>lists</strong>.</p>
+
+  <p>Learn how to manipulate strings, perform mathematical operations with numbers, and organize data using lists. Understanding data types is crucial for writing effective and efficient Python code. By the end of this chapter, you'll have a solid grasp of Python's versatile data types and their applications.</p>
+
+  <p>Join us on this exploration of data types, a key aspect of mastering Python programming!</p>"
+)
+
+chapter4 = Chapter.create!(title: "Control Structures in Python", description: "Understand control structures like loops and conditional statements in Python.", product: product1, video_id: "Zp5MuPOtsSY")
+chapter4.update!(content:
+  "<p>Dive deep into the world of <strong>control structures</strong> in <strong>Python</strong>. Control structures allow you to dictate the flow of your programs, making them dynamic and responsive. In this chapter, we'll focus on two fundamental control structures: <strong>loops</strong> and <strong>conditional statements</strong>.</p>
+
+  <p>Explore how loops enable you to repeat actions efficiently, and discover the power of conditional statements to make decisions within your code. Mastering control structures is essential for writing more complex and interactive Python programs.</p>
+
+  <p>Join us as we unravel the intricacies of control structures and empower your Python programming skills!</p>"
+
+)
+
+chapter5 = Chapter.create!(title: "Basic Functions in Python", description: "Learn the basics of defining and using functions in Python.", product: product1, video_id: "u-OmVr_fT4s")
+chapter5.update!(content:
+  "<p>Unlock the potential of <strong>functions</strong> in <strong>Python</strong>! Functions allow you to organize your code into reusable blocks, making your programs more modular and maintainable. In this chapter, we'll cover the basics of defining and using functions.</p>
+
+  <p>Learn how to create functions, pass parameters, and return values. Understanding functions is a crucial step towards writing efficient and scalable Python code. By the end of this chapter, you'll be equipped with the knowledge to design and implement your own functions.</p>
+
+  <p>Join us on this exploration of basic functions and elevate your Python programming expertise!</p>"
+)
 
 # Course 2
 file2 = URI.open("https://ideacdn.net/idea/ct/82/myassets/blogs/html-css.jpg?revision=1581690718")

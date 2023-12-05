@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+.footer {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+  .last-line {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .lista-carol {
+    flex-wrap: wrap;
+  }
+}
+
+
+@media (max-width: 425px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .last-line {
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .last-line p {
+    white-space: initial;
+    margin: 6px 0;
+  }
+
+  .footer-links {
+    margin-left: initial;
+    margin: 6px 0;
+  }
+
+  .lista-carol{
+    flex-wrap: wrap;
+  }
+}

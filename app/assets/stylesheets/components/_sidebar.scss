@@ -3,9 +3,10 @@
   height: 100vh;
   overflow-y: scroll;
   position: sticky;
-  top: 60px;
+  top: 0;
   bottom: 0;
   background-color: #c3c1c1;
+  transition: transform 0.4s ease;
 }
 
 #sidebar ul {
@@ -14,8 +15,8 @@
 
 #sidebar li {
   list-style-type: none;
-  line-height: 45px;
-  padding: 10px;
+  line-height: 30px;
+  padding: 20px;
 }
 
 #sidebar li:hover {
@@ -30,4 +31,38 @@
 .chapter-title {
   margin-bottom: 0;
   padding: 5px;
+}
+
+#chapter-title {
+  position: relative;
+}
+
+#sidebar-toggle-button {
+  position: absolute;
+  left: 310px;
+  top: 90px;
+  padding: 12px;
+  opacity: 0.5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#sidebar-toggle-button:hover {
+  opacity: 1;
+}
+
+.hidden-content {
+  transform: translateX(-300px);
+}
+
+.movebtn {
+  left: 0px !important;
+  transform: rotate(180deg);
+}
+
+.movecontent {
+  margin-left: auto;
+  transform: translateX(-150px);
+  transition: transform 0.4s ease;
 }

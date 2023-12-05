@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_183333) do
 
   create_table "chapters", force: :cascade do |t|
     t.string "title"
-    t.string "video"
+    t.string "video_id"
     t.text "content"
     t.text "quiz"
     t.bigint "product_id", null: false
