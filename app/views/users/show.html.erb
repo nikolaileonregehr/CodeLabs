@@ -35,21 +35,41 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <% if @user.status == "unsubscribed" %>
-          <div class="board red regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
-        <% elsif @user.status == "subscribed" %>
-          <div class="board green regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
+        <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
+          <div class="board red regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
+        <% elsif @user.subscription_status == 'canceled' && @user.active? %>
+          <div class="board green regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
+        <% elsif @user.subscription_status == 'active' %>
+          <div class="board green regular-fill "><p class="p-profile pb-1">Status: subscribed</p></div>
         <% end %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.subscription_ends_at %></p></div>
+      <div class="row">
+        <div class="col-12">
+          <% if @user.subscription_status == 'canceled' %>
+            <div class="board regular-fill"><p class="p-profile pb-1">Access until <%= @user.subscription_ends_at %></p></div>
+          <% elsif  @user.subscription_status == 'active' %>
+            <div class="board regular-fill"><p class="p-profile pb-1">Next payment at <%= @user.subscription_ends_at %></p></div>
+          <% end %>
+        </div>
       </div>
+    <div class="row">
+      <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
+        <div class="col-6 pb-2 text-center ">
+            <%= button_to 'Subscribe Monthly', stripe_checkout_path(price_id: @prices[0].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+        </div>
+        <div class="col-6 pb-2 text-center rounded">
+            <%= button_to 'Subscribe Yearly', stripe_checkout_path(price_id: @prices[1].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+        </div>
+      <% elsif @user.subscription_status == 'active' %>
+        <div class="col-12 pb-2 text-center">
+          <%= button_to 'Change my Subscription', stripe_billing_portal_path, data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+        </div>
+      <% end %>
     </div>
-
-
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+    <div class="col-12 pt-2">
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+    </div>
     </div>
   </div>
 

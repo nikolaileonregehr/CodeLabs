@@ -1,58 +1,64 @@
-# ActiveMerchant::Stripe::WebhooksController.new(:login => sk_test_51OJfuEA7UmY4VSRugNYy7hQOx2VQV5eyzxE91E3gd2rL6E8bDU0QUOADSvcE6htp6Eev1ZGJvSmTV4Mjkal8wOiJ00xOo59e4z)
 class Stripe::WebhooksController < ApplicationController
-  # skip_before_action :verify_authenticity_token
   skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def create
-    # Replace this endpoint secret with your endpoint's unique secret
-    # If you are testing with the CLI, find the secret by running 'stripe listen'
-    # If you are using an endpoint defined with the API or dashboard, look in your webhook settings
-    # at https://dashboard.stripe.com/webhooks
     webhook_secret = 'whsec_0ef0f94e6f903734847399a53689ec3e72022935db00e11af9e36850e3e5074b'
     payload = request.body.read
-    if !webhook_secret.empty?
-      # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
-      sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-      event = nil
 
-      begin
-        event = Stripe::Webhook.construct_event(
-          payload, sig_header, webhook_secret
-        )
-      rescue JSON::ParserError => e
-        # Invalid payload
-        status 400
-        return
-      rescue Stripe::SignatureVerificationError => e
-        # Invalid signature
-        puts '⚠️  Webhook signature verification failed.'
-        status 400
-        return
-      end
-    else
-      data = JSON.parse(payload, symbolize_names: true)
-      event = Stripe::Event.construct_from(data)
-    end
-    # Get the type of webhook event sent - used to check the status of PaymentIntents.
-    event_type = event['type']
-    data = event['data']
-    data_object = data['object']
+    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+    event = nil
 
-    case event.type
-    when 'customer.created'
-      customer = event.data.object
-      user = User.find_by(email: customer.email)
-      user.update(stripe_customer_id: customer.id)
-    when event.type == 'customer.subscription.deleted', 'customer.subscription.updated', 'customer.subscription.created'
-      subscription = event.data.object
-      user = User.find_by(stripe_customer_id: subscription.customer)
-      user.update(
-        plan: subscription.items.data[0].price.recurring.interval,
-        subscription_status: subscription.status,
-        subscription_ends_at: Time.at(subscription.current_period_end).to_datetime
-      )
+    begin
+      event = Stripe::Webhook.construct_event(payload, sig_header, webhook_secret)
+    rescue JSON::ParserError => e
+      # Invalid payload
+      render json: { error: 'Invalid payload' }, status: 400
+      return
+    rescue Stripe::SignatureVerificationError => e
+      # Invalid signature
+      render json: { error: 'Webhook signature verification failed' }, status: 400
+      return
     end
+
+    handle_stripe_event(event)
 
     render json: { message: 'success' }
+  end
+
+  private
+
+  def handle_stripe_event(event)
+    case event.type
+    when 'customer.created'
+      handle_customer_created(event)
+    when 'customer.subscription.deleted', 'customer.subscription.updated', 'customer.subscription.created'
+      handle_subscription_event(event)
+    end
+  end
+
+  def handle_customer_created(event)
+    customer = event.data.object
+    user = User.find_by(email: customer.email)
+    user&.update(stripe_customer_id: customer.id)
+  end
+
+  def handle_subscription_event(event)
+    subscription = event.data.object
+    user = User.find_by(stripe_customer_id: subscription.customer)
+
+    return unless user.present?
+
+    if user.active? == true
+      user.status = "subscribed"
+      user.save
+    else
+      user.status = "unsubscribed"
+      user.save
+    end
+    user.update(
+      plan: subscription.items.data[0].price.recurring.interval,
+      subscription_status: subscription.status,
+      subscription_ends_at: Time.at(subscription.current_period_end).to_datetime
+    )
   end
 end

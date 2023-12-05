@@ -22,12 +22,11 @@ Rails.application.routes.draw do
 
   # stripe listen --forward-to localhost:3000/stripe/webhooks
   post '/stripe/webhooks', to: 'stripe/webhooks#create'
-  get '/pricing', to: 'stripe/checkout#pricing'
   post '/stripe/checkout', to: 'stripe/checkout#checkout'
   get '/stripe/checkout/cancel', to: 'stripe/checkout#cancel'
   get '/stripe/checkout/success', to: 'stripe/checkout#success'
   post '/stripe/billing_portal', to: 'stripe/billing_portal#create'
-
+  # mount StripeEvent::Engine, at: '/stripe-webhooks'
   # resources :pricing, only: [:pricing]
   get "/profile", to: "users#show"
   # Defines the root path route ("/")

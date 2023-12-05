@@ -84,4 +84,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "stripe", "~> 10.2"
+gem "stripe"
+gem 'stripe_event'

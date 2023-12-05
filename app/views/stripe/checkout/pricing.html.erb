@@ -10,7 +10,8 @@
 
   <hr>
 
-  Tipo de plano:<%= current_user.plan %>
-  Status: <%= current_user.subscription_status %>
-  Stripe ID:<%= current_user.stripe_customer_id  %>
+  <p>Tipo de plano:<%= current_user.plan %></p>
+  <p>Status: <%= current_user.subscription_status %></p>
+  <p>End time: <%= current_user.subscription_ends_at %></p>
+  <p>Stripe ID:<%= current_user.stripe_customer_id  %></p>
 <% end %>
