@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_173714) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_05_183333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,6 +126,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_173714) do
     t.string "status", default: "unsubscribed"
     t.string "role"
     t.string "country"
+    t.string "stripe_customer_id"
+    t.string "plan"
+    t.string "subscription_status"
+    t.datetime "subscription_ends_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
