@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/stripe/checkout/cancel', to: 'stripe/checkout#cancel'
   get '/stripe/checkout/success', to: 'stripe/checkout#success'
   post '/stripe/billing_portal', to: 'stripe/billing_portal#create'
-  # mount StripeEvent::Engine, at: '/stripe-webhooks'
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
   # resources :pricing, only: [:pricing]
   get "/profile", to: "users#show"
   # Defines the root path route ("/")
