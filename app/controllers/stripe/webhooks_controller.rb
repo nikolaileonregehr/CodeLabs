@@ -1,5 +1,7 @@
+# ActiveMerchant::Stripe::WebhooksController.new(:login => sk_test_51OJfuEA7UmY4VSRugNYy7hQOx2VQV5eyzxE91E3gd2rL6E8bDU0QUOADSvcE6htp6Eev1ZGJvSmTV4Mjkal8wOiJ00xOo59e4z)
 class Stripe::WebhooksController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def create
     # Replace this endpoint secret with your endpoint's unique secret
@@ -36,7 +38,6 @@ class Stripe::WebhooksController < ApplicationController
     data = event['data']
     data_object = data['object']
 
-
     case event.type
     when 'customer.created'
       customer = event.data.object
@@ -53,10 +54,5 @@ class Stripe::WebhooksController < ApplicationController
     end
 
     render json: { message: 'success' }
-    # content_type 'application/json'
-    # {
-    #   status: 'success'
-    # }.to_json
-
   end
 end

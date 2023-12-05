@@ -42,6 +42,11 @@
         <% end %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.subscription_ends_at %></p></div>
+      </div>
+    </div>
 
 
     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>

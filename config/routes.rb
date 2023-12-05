@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :favorites, only: [:index, :destroy]
 
-  # stripe listen --forward-to localhost:4242/stripe/webhook
+  # stripe listen --forward-to localhost:3000/stripe/webhooks
   post '/stripe/webhooks', to: 'stripe/webhooks#create'
   get '/pricing', to: 'stripe/checkout#pricing'
   post '/stripe/checkout', to: 'stripe/checkout#checkout'
