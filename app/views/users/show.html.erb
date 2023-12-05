@@ -3,50 +3,61 @@
     <h1>My Profile</h1>
   </div>
   <div class="profile-img text-center">
-  <% if @user.photo.key %>
-    <%= cl_image_tag @user.photo.key, class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture" %>
-  <% else %>
-    <%= image_tag "default_image.webp", class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture"  %>
-  <% end %>
+    <% if @user.photo.key %>
+      <%= cl_image_tag @user.photo.key, class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture" %>
+    <% else %>
+      <%= image_tag "default_image.webp", class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture"  %>
+    <% end %>
   </div>
-  <div class="col-6 board-container card p-4 shadow rounded mb-5">
+  <div class="col-md-6 col-sm-12 board-container card p-4 shadow rounded mb-5">
     <div class="row">
       <div class="col-12">
-        <div class="board email"><p class="p-profile pb-1">My email: <%= @user.email %></p></div>
+        <div class="board email">
+          <p class="p-profile pb-1">My email: <%= @user.email %></p>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
-        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.first_name %></p></div>
+      <div class="col-6 col-md-12">
+        <div class="board regular-fill">
+          <p class="p-profile pb-1"><%= @user.first_name %></p>
+        </div>
       </div>
-      <div class="col-6">
-        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.last_name %></p></div>
+      <div class="col-6 col-md-12">
+        <div class="board regular-fill">
+          <p class="p-profile pb-1"><%= @user.last_name %></p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.address %></p></div>
+        <div class="board regular-fill">
+          <p class="p-profile pb-1"><%= @user.address %></p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <div class="board regular-fill"><p class="p-profile pb-1"><%= @user.country %></p></div>
+        <div class="board regular-fill">
+          <p class="p-profile pb-1"><%= @user.country %></p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <% if @user.status == "unsubscribed" %>
-          <div class="board red regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
+          <div class="board red regular-fill">
+            <p class="p-profile pb-1">Status: <%= @user.status%></p>
+          </div>
         <% elsif @user.status == "subscribed" %>
-          <div class="board green regular-fill "><p class="p-profile pb-1">Status: <%= @user.status%></p></div>
+          <div class="board green regular-fill">
+            <p class="p-profile pb-1">Status: <%= @user.status%></p>
+          </div>
         <% end %>
       </div>
     </div>
-
-
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-    </div>
   </div>
 
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
 
 </div>

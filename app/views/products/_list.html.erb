@@ -1,7 +1,6 @@
 <div class="row" data-search-courses-target='list'>
   <% @products.each do |product| %>
-    <div class="col-3 mb-4">
-
+    <div class="col-md-6 col-lg-4 mb-4">
       <%= link_to product_path(product), class: "product-link" do %>
         <div class="card card-index position-relative shadow">
           <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 170px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path product.photo.key, height: 300, crop: :fill %>')"></div>
