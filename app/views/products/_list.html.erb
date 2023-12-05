@@ -1,27 +1,26 @@
 <div class="row" data-search-courses-target='list'>
-        <% @products.each do |product| %>
-          <div class="col-3 mb-4">
+  <% @products.each do |product| %>
+    <div class="col-3 mb-4">
 
-            <%= link_to product_path(product), class: "product-link" do %>
-              <div class="card card-index position-relative shadow">
-
-              <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 170px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path product.photo.key, height: 300, crop: :fill %>')"></div>
-                <div class="card-body p-4 card-carla">
-                  <div>
-                    <h5 class="card-title mb-4"><strong><%= product.subject %></strong></h5>
-                    <p class="location card-text"> <%= product.description %></p>
-                  </div>
-                  <div class="card-duration-difficulty">
-                    <span>
-                      <i class="fa-regular fa-hourglass-half me-2"></i><%=product.duration%>
-                    </span>
-                    <span>
-                      <i class="fa-solid fa-stairs me-2"></i></i><%=product.level%>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+      <%= link_to product_path(product), class: "product-link" do %>
+        <div class="card card-index position-relative shadow">
+          <div style="background-size: cover; background-repeat: no-repeat; width: 100%; height: 170px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path product.photo.key, height: 300, crop: :fill %>')"></div>
+          <div class="card-body p-4 card-carla">
+            <div>
+              <h5 class="card-title mb-4"><strong><%= product.subject %></strong></h5>
+              <p class="location card-text"> <%= product.description %></p>
+            </div>
+            <div class="card-duration-difficulty">
+              <span>
+                <i class="fa-regular fa-hourglass-half me-2"></i><%=product.duration%>
+              </span>
+              <span>
+                <i class="fa-solid fa-stairs me-2"></i></i><%=product.level%>
+              </span>
+            </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

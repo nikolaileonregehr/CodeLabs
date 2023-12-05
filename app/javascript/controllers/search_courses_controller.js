@@ -19,5 +19,4 @@ export default class extends Controller {
         this.listTarget.outerHTML = data
       })
   }
-
 }
