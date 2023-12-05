@@ -11,4 +11,8 @@ class UsersController < ApplicationController
     @chats = Chatroom.where(student: current_user)
   end
 
+  def gptchats
+    @gptchats = GptChatroom.where(student: current_user)
+  end
+
 end
