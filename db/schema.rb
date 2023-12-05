@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_150231) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_173714) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_150231) do
 
   create_table "chapters", force: :cascade do |t|
     t.string "title"
-    t.string "video"
+    t.string "video_id"
     t.text "content"
     t.text "quiz"
     t.bigint "product_id", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_150231) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.string "status", default: "unsubscribed"
+    t.string "status"
     t.string "role"
     t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true

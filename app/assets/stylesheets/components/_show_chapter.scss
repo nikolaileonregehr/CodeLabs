@@ -1,3 +1,40 @@
 .next-previous {
   // width: 100%;
 }
+
+.inside-content {
+  background-color: white;
+}
+
+iframe {
+  opacity: 0.8;
+}
+
+iframe:hover {
+  opacity: 1;
+}
+
+.course-navlink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-navlink p  {
+  margin-bottom: 0;
+}
+
+.course-navlink a  {
+  text-decoration: none;
+  color: gray;
+}
+
+.course-navbtn {
+  margin: 5px;
+}
+
+.course-navbtn:hover {
+  margin: 5px;
+  color: black;
+  opacity: 0.7;
+}
