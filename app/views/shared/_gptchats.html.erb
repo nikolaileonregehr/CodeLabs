@@ -1,8 +1,9 @@
+
 <div class="container chatroom"
   data-controller="chatroom-subscription"
   data-gpt-chatroom-subscription-chatroom-id-value="<%= gpt_chatroom.id %>"
 >
-  <h1>#<%= gpt_chatroom.student.first_name%> + <%= gpt_chatroom.gpt_user.first_name %></h1>
+  <h1>#<%= gpt_chatroom.student.first_name %> + <%= gpt_chatroom.gpt_user.first_name %></h1>
 
   <div class="messages" data-gpt-chatroom-subscription-target="messages">
     <% gpt_chatroom.gpt_messages.each do |message| %>
@@ -18,21 +19,15 @@
 </div>
 
 <%= simple_form_for [gpt_chatroom, gpt_message],
-  html: {class: "d-flex"} do |f|
+  html: { data: { action: "turbo:submit-end->gpt-chatroom-subscription#resetForm" }, class: "d-flex"} do |f|
 %>
   <%= f.input :content,
     label: false,
     placeholder: "Message ##{gpt_chatroom.id}",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3" %>
 <% end %>
-
-<div class="messages" data-chatroom-subscription-target="messages">
-  <% gpt_chatroom.gpt_messages.each do |message| %>
-    <%= render "messages/message", message: message %>
-  <% end %>
-</div>
 
 <%= simple_form_for [gpt_chatroom, gpt_message],
   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|

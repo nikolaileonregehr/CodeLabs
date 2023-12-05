@@ -12,3 +12,7 @@ export default class extends Controller {
     console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
   }
 }
+
+resetForm(event) {
+  event.target.reset()
+}

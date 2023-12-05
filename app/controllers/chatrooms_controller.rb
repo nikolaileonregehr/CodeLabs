@@ -9,6 +9,15 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def create
+    @chatroom = Chatroom.new
+    @chatroom.student_id = current_user.id
+    @chatroom.teacher_id = User.find_by(role: "teacher").id
+    @chatroom.title = current_user.first_name
+    @chatroom.save
+    redirect_to chatroom_path(@chatroom)
+  end
+
   def destroy
     # Find and delete the chat
     @chatroom = Chatroom.find(params[:id])

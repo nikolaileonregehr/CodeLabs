@@ -8,8 +8,18 @@ class UsersController < ApplicationController
   end
 
   def chats
-    @chats = Chatroom.where(student: current_user)
+    if current_user.email == "teacher@teacher.com"
+      @chats = Chatroom.all
+    else
+      @chats = Chatroom.where(student: current_user)
+    end
   end
+
+  # if logged in user is teacher
+  # get all chatrooms
+
+  # if user is not teacher
+  # get only chats where user is student
 
   def gptchats
     @gptchats = GptChatroom.where(student: current_user)
