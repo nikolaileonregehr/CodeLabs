@@ -12,5 +12,4 @@ class UsersController < ApplicationController
   def chats
     @chats = Chatroom.where(student: current_user)
   end
-
 end
