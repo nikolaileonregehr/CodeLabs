@@ -10,12 +10,12 @@ Rails.application.routes.draw do
     resources :favorites, only: [:new, :create]
   end
 
-  resources :chatrooms, only: [:show, :create] do
+  resources :chatrooms, only: [:show, :create, :destroy] do
     resources :messages, only: :create
   end
 
   post "/gpt_chatrooms", to: "gpt_chatrooms#create"
-  resources :gpt_chatrooms, only: [:show] do
+  resources :gpt_chatrooms, only: [:show, :destroy] do
     resources :gpt_messages, only: :create
   end
 
@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/chats", to: "users#chats"
+  get "/gptchats", to: "users#gptchats"
 end

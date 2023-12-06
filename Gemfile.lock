@@ -344,6 +344,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  monetize
   money-rails
   pg (~> 1.1)
   puma (>= 5.0)

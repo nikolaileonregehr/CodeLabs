@@ -86,3 +86,4 @@ end
 
 gem "stripe"
 gem 'stripe_event'
+gem "monetize"
