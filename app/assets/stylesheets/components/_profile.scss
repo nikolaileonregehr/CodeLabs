@@ -15,21 +15,44 @@
 
 .p-profile {
   padding-left: 8px;
+  opacity: 0.7;
 }
 
 .email {
-  font-size:22px;
+  font-size:18px;
   font-weight: 500;
 }
 
 .regular-fill {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .red {
-  background-color: #FF0000;
+  background-color: lightcoral;
 }
 
 .green {
   background-color: lightgreen;
+}
+
+.btn-medium {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+
+.btn-treehouse {
+  color: #393838;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-weight: lighter;
+  opacity: 0.6;
+  border: none;
+}
+
+.btn-treehouse:hover {
+  color: black;
 }
