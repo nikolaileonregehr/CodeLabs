@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   # resources :pricing, only: [:pricing]
   get "/profile", to: "users#show"
+  patch "/edit_subscription", to: "users#editsubscription"
   # Defines the root path route ("/")
   # root "posts#index"
 
