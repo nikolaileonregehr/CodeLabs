@@ -6,3 +6,18 @@ Rails.configuration.stripe = {
 
 # ...
 StripeEvent.signing_secret = Rails.configuration.stripe[:signing_secret]
+StripeEvent.configure do |events|
+  # events.subscribe 'checkout.session.completed', StripeCheckoutSessionService.new
+  events.subscribe 'customer.created' do |event|
+    StripeEventsService.new.customer_create(event)
+  end
+  events.subscribe 'customer.subscription.deleted' do |event|
+    StripeEventsService.new.handle_subscription_event(event)
+  end
+  events.subscribe 'customer.subscription.created' do |event|
+    StripeEventsService.new.handle_subscription_event(event)
+  end
+  events.subscribe 'customer.subscription.updated' do |event|
+    StripeEventsService.new.handle_subscription_event(event)
+  end
+end
