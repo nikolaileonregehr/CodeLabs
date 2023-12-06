@@ -1,3 +1,5 @@
+<% content_for :meta_title, "#{@product.subject} is on #{DEFAULT_META["meta_product_name"]}" %>  <% content_for :meta_description, @product.description %>  <% content_for :meta_image, cl_image_path(@product.photo.key) %>
+
 <div class="container mt-4">
   <div class="head-product mb-5">
     <h1><strong><%= @product.subject %></strong></h1>
@@ -29,7 +31,7 @@
       </div>
   </div>
 
-  <div class="product-chapter col-md-6">
+  <div class="product-chapter col-md-6 mb-5">
     <ul class="list-group">
       <% if user_signed_in? && @user.status == "subscribed" %>
        <h3 class="ms-3"><strong>Chapters</strong></h3>

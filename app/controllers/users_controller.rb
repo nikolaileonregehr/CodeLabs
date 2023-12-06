@@ -26,5 +26,4 @@ class UsersController < ApplicationController
   def gptchats
     @gptchats = GptChatroom.where(student: current_user)
   end
-
 end

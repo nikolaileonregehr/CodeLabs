@@ -2,84 +2,104 @@
   <div style="text-align: center; margin-top: 15px; margin-bottom: 20px">
     <h1>My Profile</h1>
   </div>
-  <div class="profile-img text-center">
-    <% if @user.photo.key %>
-      <%= cl_image_tag @user.photo.key, class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture" %>
-    <% else %>
-      <%= image_tag "default_image.webp", class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture"  %>
-    <% end %>
-  </div>
-  <div class="col-md-6 col-sm-12 board-container card p-4 shadow rounded mb-5">
-    <div class="row">
-      <div class="col-12">
-        <div class="board email">
-          <p class="p-profile pb-1">My email: <%= @user.email %></p>
+  <div class="col-12 d-flex flex-column align-items-center">
+    <div class="col-md-4 col-sm-12">
+      <div class="board-container card p-4 shadow rounded mb-5">
+        <div class="row">
+          <div class="col-12">
+            <div class="profile-img text-center">
+              <% if @user.photo.key %>
+                <%= cl_image_tag @user.photo.key, class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture" %>
+              <% else %>
+                <%= image_tag "default_image.webp", class: "img-fluid rounded-circle mb-5", style: "height: 250px", alt: "profile picture"  %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="text-center">Profile Infos</h5>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="board email">
+              <p class="p-profile pb-1">E-mail: <%= @user.email %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 col-md-12">
+            <div class="board regular-fill">
+              <p class="p-profile pb-1">First Name: <%= @user.first_name %></p>
+            </div>
+          </div>
+          <div class="col-6 col-md-12">
+            <div class="board regular-fill">
+              <p class="p-profile pb-1">Last Name: <%= @user.last_name %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="board regular-fill">
+              <p class="p-profile pb-1">Address: <%= @user.address %></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="board regular-fill">
+              <p class="p-profile pb-1">Country: <%= @user.country %></p>
+            </div>
+          </div>
+          <div class="col-6 col-md-12">
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-warning" %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-6 col-md-12">
-        <div class="board regular-fill">
-          <p class="p-profile pb-1"><%= @user.first_name %></p>
+
+    <div class="col-md-4 col-sm-12">
+      <div class="board-container card p-4 shadow rounded mb-5">
+        <div class="row">
+        <h5 class="text-center">Subscription</h5>
+          <div class="col-12">
+            <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
+              <div class="board red regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
+            <% elsif @user.subscription_status == 'canceled' && @user.active? %>
+              <div class="board green regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
+            <% elsif @user.subscription_status == 'active' %>
+              <div class="board green regular-fill "><p class="p-profile pb-1">Status: subscribed</p></div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="col-6 col-md-12">
-        <div class="board regular-fill">
-          <p class="p-profile pb-1"><%= @user.last_name %></p>
+        <div class="row">
+          <div class="col-12">
+            <% if @user.subscription_status == 'canceled' %>
+              <div class="board regular-fill"><p class="p-profile pb-1">Access until <%= @user.subscription_ends_at %></p></div>
+            <% elsif  @user.subscription_status == 'active' %>
+              <div class="board regular-fill"><p class="p-profile pb-1">Next payment at <%= @user.subscription_ends_at %></p></div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="board regular-fill">
-          <p class="p-profile pb-1"><%= @user.address %></p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="board regular-fill">
-          <p class="p-profile pb-1"><%= @user.country %></p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
-          <div class="board red regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
-        <% elsif @user.subscription_status == 'canceled' && @user.active? %>
-          <div class="board green regular-fill "><p class="p-profile pb-1">Status: unsubscribed</p></div>
-        <% elsif @user.subscription_status == 'active' %>
-          <div class="board green regular-fill "><p class="p-profile pb-1">Status: subscribed</p></div>
-        <% end %>
-      </div>
-    </div>
-      <div class="row">
-        <div class="col-12">
-          <% if @user.subscription_status == 'canceled' %>
-            <div class="board regular-fill"><p class="p-profile pb-1">Access until <%= @user.subscription_ends_at %></p></div>
-          <% elsif  @user.subscription_status == 'active' %>
-            <div class="board regular-fill"><p class="p-profile pb-1">Next payment at <%= @user.subscription_ends_at %></p></div>
+        <div class="row">
+          <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
+          <h6 class="text-center">Choose your subscription plan</h6>
+            <div class="col-6 pb-2 text-center ">
+                <%= button_to 'Subscribe Monthly', stripe_checkout_path(price_id: @prices[0].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+            </div>
+            <div class="col-6 pb-2 text-center rounded">
+                <%= button_to 'Subscribe Yearly', stripe_checkout_path(price_id: @prices[1].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+            </div>
+          <% elsif @user.subscription_status == 'active' %>
+            <div class="col-12 pb-2 text-center">
+              <%= button_to 'Change my Subscription', stripe_billing_portal_path, data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
+            </div>
           <% end %>
         </div>
+        <div class="row ">
+            <%= button_to "Cancel my account", user_registration_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn-treehouse" %>
+        </div>
       </div>
-    <div class="row">
-      <% if @user.subscription_status == 'canceled' || @user.subscription_status == nil %>
-        <div class="col-6 pb-2 text-center ">
-            <%= button_to 'Subscribe Monthly', stripe_checkout_path(price_id: @prices[0].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
-        </div>
-        <div class="col-6 pb-2 text-center rounded">
-            <%= button_to 'Subscribe Yearly', stripe_checkout_path(price_id: @prices[1].id), data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
-        </div>
-      <% elsif @user.subscription_status == 'active' %>
-        <div class="col-12 pb-2 text-center">
-          <%= button_to 'Change my Subscription', stripe_billing_portal_path, data: {turbo: 'false'}, class: 'btn btn-success w-100' %>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-12 pt-2">
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-    </div>
     </div>
   </div>
 </div>
