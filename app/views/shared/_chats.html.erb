@@ -3,7 +3,6 @@
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
-  <h1>#<%= @chatroom.student.first_name%> + <%= @chatroom.teacher.first_name %></h1>
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' :
@@ -22,6 +21,6 @@
       placeholder: "Message ##{@chatroom.id}",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3" %>
   <% end %>
 </div>

@@ -14,12 +14,9 @@ class GptMessagesController < ApplicationController
   @gpt_message = GptMessage.new(content: @content, gpt_chatroom: @chatroom, user: User.find_by(email: "gpt@gpt.com"))
   @gpt_message.save
       GptChatroomChannel.broadcast_to(
-        @chatroom,
-        render_to_string(partial: "gpt_message", locals: {message: @message})
-      )
-      GptChatroomChannel.broadcast_to(
-        @chatroom,
-        render_to_string(partial: "gpt_message", locals: {message: @gpt_message})
+        @gpt_chatroom,
+        message: render_to_string(partial: "gpt_message", locals: { message: @gpt_message }),
+        sender_id: @gpt_message.user.id
       )
       head :ok
     else

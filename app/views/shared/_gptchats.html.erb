@@ -1,35 +1,27 @@
-
 <div class="container chatroom"
   data-controller="chatroom-subscription"
   data-gpt-chatroom-subscription-chatroom-id-value="<%= gpt_chatroom.id %>"
->
-  <h1>#<%= gpt_chatroom.student.first_name %> + <%= gpt_chatroom.gpt_user.first_name %></h1>
+  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
   <div class="messages" data-gpt-chatroom-subscription-target="messages">
-    <% gpt_chatroom.gpt_messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.email %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
+    <% @gpt_chatroom.gpt_messages.each do |message| %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
       </div>
     <% end %>
   </div>
-</div>
 
-<%= simple_form_for [gpt_chatroom, gpt_message],
-  html: { data: { action: "turbo:submit-end->gpt-chatroom-subscription#resetForm" }, class: "d-flex"} do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{gpt_chatroom.id}",
-    wrapper_html: {class: "flex-grow-1"}
+  <%= simple_form_for [gpt_chatroom, gpt_message],
+    html: { data: { action: "turbo:submit-end->gpt-chatroom-subscription#resetForm" }, class: "d-flex"} do |f|
   %>
-  <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3" %>
-<% end %>
-
-<%= simple_form_for [gpt_chatroom, gpt_message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-<% end %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{gpt_chatroom.id}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3 me-2" %>
+    <%= link_to "Talk to teacher", chatrooms_path, class: "btn btn-secondary btn-sm mb-3 me-2 d-flex align-items-center", data: { turbo_method: "post" } %>
+  <% end %>
+</div>
