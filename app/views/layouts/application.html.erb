@@ -11,16 +11,16 @@
 
   </head>
 
-  <body>
+  <body class="body d-flex flex-column min-vh-100">
   <%= render "shared/navbar" %>
   <div class="main">
     <%= render "shared/flashes" %>
     <%= yield %>
   </div>
   <% unless rendering_show_chapter %>
-    <div class="footer mt-3">
+    <footer class="footer">
       <%= render "shared/footer" %>
-    </div>
+    </footer>
   <% end %>
   </div>
   </body>
