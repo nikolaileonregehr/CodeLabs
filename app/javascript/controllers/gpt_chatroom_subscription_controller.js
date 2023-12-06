@@ -4,6 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages"]
+
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "GptChatroomChannel", id: this.chatroomIdValue },
@@ -11,8 +12,8 @@ export default class extends Controller {
     )
     console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
   }
-}
 
-resetForm(event) {
-  event.target.reset()
+  resetForm(event) {
+    event.target.reset()
+  }
 }

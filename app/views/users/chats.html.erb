@@ -1,8 +1,8 @@
 <div class='container-fluid' data-controller="chats-overview">
   <div class="row">
     <!-- Sidebar -->
-    <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-0">
-      <h4 class="text-center pt-4">Chat overview</h4>
+    <div id="sidebar" class="d-flex flex-column flex-shrink-0 bg-light col-3 p-3">
+      <h4 class="text-center">Chat overview</h4>
       <ul class="list-group">
         <% @chats.each do |n| %>
           <li class="ps-2 list-group-item d-flex justify-content-between" data-chatroom-id="<%=n.id%>" data-action="click->chats-overview#revealContent">
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Chatroom on the right -->
-    <div class="col-9">
+    <div class="col-9 p-3">
       <%# added for chats card %>
       <i class="caret-down"></i>
       <p class="d-none"></p>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def chats
-    if current_user.email == "teacher@teacher.com"
+    if current_user.email == "teacher@teacher.com" || "owner@owner.com"
       @chats = Chatroom.all
     else
       @chats = Chatroom.where(student: current_user)
