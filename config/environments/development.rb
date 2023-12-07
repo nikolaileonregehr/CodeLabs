@@ -78,7 +78,7 @@ Rails.application.configure do
   config.hosts << '.ngrok.io'
   config.hosts << "\[ngrok url]"
 
-  config.hosts << "af3f-179-176-62-73.ngrok-free.app"
-
+  config.hosts << "5207-177-41-22-41.ngrok-free.app"
+  config.hosts << "5207-177-41-22-41.ngrok-free.app"
 end
 Rails.application.config.hosts << '7d8f-179-176-62-73.ngrok-free.app'
