@@ -40,7 +40,7 @@
 #sidebar-toggle-button {
   position: absolute;
   left: 310px;
-  top: 90px;
+  top: 20px;
   padding: 12px;
   opacity: 0.5;
   cursor: pointer;
@@ -50,6 +50,12 @@
 
 #sidebar-toggle-button:hover {
   opacity: 1;
+}
+
+.sticky-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -20px;
 }
 
 .hidden-content {
