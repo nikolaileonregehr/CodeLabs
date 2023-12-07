@@ -14,7 +14,7 @@
   </div>
 
   <%= simple_form_for [gpt_chatroom, gpt_message],
-    html: { data: { action: "turbo:submit-end->gpt-chatroom-subscription#resetForm" }, class: "d-flex"} do |f|
+    html: { data: { action: "turbo:submit-end->gpt-chatroom-subscription#resetForm keyup->gpt-chatroom-subscription#keysendmessage" }, class: "d-flex"} do |f|
   %>
     <%= f.input :content,
       label: false,

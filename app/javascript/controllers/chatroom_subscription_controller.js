@@ -32,6 +32,14 @@ export default class extends Controller {
     event.target.reset()
   }
 
+  keysendmessage(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      //event.preventDefault();
+      event.target.form.requestSubmit();
+      event.currentTarget.reset();
+    }
+  }
+
   disconnect() {
     this.channel.unsubscribe()
   }

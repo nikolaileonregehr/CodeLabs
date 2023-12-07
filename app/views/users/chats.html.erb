@@ -20,9 +20,7 @@
               <% end %>
             <% end %>
             <div class="text-left">
-              <p class="mb-0">Chat <%= n.id %></p>
-              <p class="small text-muted mb-0">ID: <%= n.student_id %></p>
-            </div>
+              <p class="mb-0">Chat <%= n.id %></p>            </div>
             <div class="text-right">
               <p class="mb-0 chat-time"> <i class="fa-regular fa-clock"></i> <%= n.updated_at.strftime('%H:%M') %></p>
               <p class="small text-muted mb-0"><%= n.updated_at.strftime('%Y-%m-%d') %></p>
