@@ -1,0 +1,28 @@
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.chapter-name {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.chapter-name:hover {
+  background-color: lavender;
+  color: black;
+  border: 1px solid #ddd;
+}
+
+.chapter-title {
+  margin-bottom: 8px;
+}
+
+.chapter-description {
+  margin-bottom: 0;
+}
+
+.product-image {
+  margin-top: 45ßpx;
+}
