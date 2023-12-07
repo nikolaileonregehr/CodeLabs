@@ -31,28 +31,28 @@
       </div>
   </div>
 
-  <div class="product-chapter col-md-6 mb-5">
-    <ul class="list-group">
-      <% if user_signed_in? && @user.status == "subscribed" %>
-       <h3 class="ms-3"><strong>Chapters</strong></h3>
-        <% @product.chapters.each do |chapter| %>
-          <%= link_to product_chapter_path(@product, chapter), class:"chapter-link" do %>
-          <div class="">
-            <li class="list-group-item hover-grey"><p><strong><%= chapter.title %></strong></p>
-              <p><%= chapter.description %></p>
-            </li>
-          </div>
+    <div class="product-chapter col-md-6 mb-5">
+      <div class="chapters-container ms-3">
+        <% if user_signed_in? && @user.status == "subscribed" %>
+          <h3 class="text-center"><strong>Chapters</strong></h3>
+          <% @product.chapters.each do |chapter| %>
+            <%= link_to product_chapter_path(@product, chapter), class: "chapter-link" do %>
+              <button class="btn chapter-name">
+                <p class="chapter-title"><strong><%= chapter.title %></strong></p>
+                <p class="chapter-description"><%= chapter.description %></p>
+              </button>
+            <% end %>
+          <% end %>
+        <% else %>
+          <h3><strong>Chapters</strong></h3>
+          <% @product.chapters.each do |chapter| %>
+            <button class="btn chapter-name">
+              <p class="chapter-title"><strong><%= chapter.title %></strong></p>
+              <p class="chapter-description"><%= chapter.description %></p>
+            </button>
           <% end %>
         <% end %>
-      <% else %>
-       <h3 class="ms-3"><strong>Chapters</strong></h3>
-        <% @product.chapters.each do |chapter| %>
-          <li class="list-group-item"><p><strong><%= chapter.title %></strong></p>
-            <p><%= chapter.description %></p>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
+      </div>
+    </div>
   </div>
 </div>
