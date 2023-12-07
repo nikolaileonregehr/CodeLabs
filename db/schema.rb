@@ -123,7 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_183333) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.string "status"
+    t.string "status", default: "unsubscribed"
     t.string "role"
     t.string "country"
     t.string "stripe_customer_id"
