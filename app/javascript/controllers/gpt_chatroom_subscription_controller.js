@@ -16,11 +16,19 @@ export default class extends Controller {
     event.target.reset()
   }
 
+  keysendmessage(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      //event.preventDefault();
+      event.target.form.requestSubmit();
+      event.currentTarget.reset();
+    }
+  }
+
   #insertMessageAndScrollDown(data) {
     // Logic to know if the sender is the current_user
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
 
-    console.log(currentUserIsSender)
+    // console.log(currentUserIsSender)
 
     // Creating the whole message from the `data.message` String
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
