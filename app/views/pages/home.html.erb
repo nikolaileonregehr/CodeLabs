@@ -1,42 +1,42 @@
 <div>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://wearetechwomen.com/wp-content/uploads/2021/09/shutterstock_1687431796.jpg')">
     <div class="container p-4">
-      <h1>Have the most time-efficient with our lectures.</h1>
-      <p>Choose what language you want to learn with our dynamic teaching.</p>
-      <%= link_to "See all courses", products_path, class:"btn apply" %>
+      <h1 class="mb-4">Start Your Coding Journey Today!</h1>
+      <p>Embark on a programming adventure supported by our teachers & your personal 24/7 AI assistant.</p>
+      <%= link_to "See all courses", products_path, class:"btn apply", style:"background-color: #372a9d;" %>
     </div>
   </div>
 
   <div class="container">
     <div class="lading-page-content">
-      <h3 class="text-center m-5">Why <strong class="codelabs">Code Labs</strong> ?</h3>
+      <h3 class="text-center mt-5 mb-5">Why <strong class="codelabs">CodeLabs</strong> ?</h3>
       <div class="features m-3">
         <ul class="list-unstyled d-flex justify-content-around lista-carol">
-          <li class="text-center">
-            <i class="fa-solid fa-code fa-3x mb-3"></i>
-            <h4>Code Mastery Unleashed!</h4>
-            <p>Unlock expertly curated content for coding excellence. Elevate your skills with industry-led courses.</p>
+          <li class="text-center ms-5 me-5">
+            <i class="fa-solid fa-stairs fa-3x mb-3"></i>
+            <h4 class="mb-3">Build Your Career</h4>
+            <p class="mb-3">Becoming a programmer has never been more rewarding. Start your journey today.</p>
           </li>
           <li class="text-center ms-5 me-5">
-            <i class="fas fa-robot fa-3x mb-3"></i>
-            <h4>Code Smarter with AI</h4>
-            <p>Your virtual coding mentor—get instant feedback, personalized insights. Learn at your own pace.</p>
+            <i class="fa-solid fa-comment-dots fa-3x mb-3"></i>
+            <h4 class="mb-3">24/7 AI Support</h4>
+            <p class="mb-3">Your personal virtual coding assistant provides instant feedback and answers any of your questions.</p>
           </li>
-          <li class="text-center">
+          <li class="text-center ms-5 me-5">
             <i class="fas fa-comments fa-3x mb-3"></i>
-            <h4>Real-time Code Guidance</h4>
-            <p>Interactive learning, instant feedback. Elevate your skills with personalized, one-on-one teaching.</p>
+            <h4 class="mb-3">Experienced Live Teachers</h4>
+            <p class="mb-3">You would like to talk to a humon teacher? Discuss your questions and progress with our team at any time.</p>
           </li>
         </ul>
       </div>
       <div class="mb-5 mt-5 text-center">
-        <h2>MEET OUR SUBSCRIPTIONS</h2>
+        <h2>CHOOSE YOUR SUBSCRIPTION</h2>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
   <div class="row mb-3 mt-5 text-center justify-content-center">
     <div class="col-md-6 col-lg-4 col-12">
       <div class="card mb-4 rounded-3 shadow-sm">
@@ -44,11 +44,11 @@
           <h5 class="my-0 fw-normal">Monthly</h5>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">R$15<small class="text-body-secondary fw-light">/mo</small></h1>
+          <h1 class="card-title pricing-card-title">R$15<small class="text-body-secondary fw-light"> / month</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>Access to all courses</li>
-            <li>Unlimited questions to the teacher</li>
-            <li>Access to AI assistant</li>
+            <li class="mb-1">Access to all courses</li>
+            <li class="mb-1">24/7 AI assistant support</li>
+            <li class="mb-1">Unlimited teacher support</li>
             <li>ㅤ</li>
           </ul>
           <% if user_signed_in? %>
@@ -65,12 +65,12 @@
           <h5 class="my-0 fw-normal">Yearly</h5>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">R$150<small class="text-body-secondary fw-light">/year</small></h1>
+          <h1 class="card-title pricing-card-title">R$150<small class="text-body-secondary fw-light"> / year</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>Access to all courses</li>
-            <li>Unlimited questions to the teacher</li>
-            <li>Access to AI assistant</li>
-            <li>You pay less for each month</li>
+            <li class="mb-1">Access to all courses</li>
+            <li class="mb-1">24/7 AI assistant support</li>
+            <li class="mb-1">Unlimited teacher support</li>
+            <li class="mb-1">Two months for free</li>
           </ul>
           <% if user_signed_in? %>
             <%= button_to "Subscribe", stripe_checkout_path(price_id: @prices[1].id), data: {turbo: 'false'}, class: "w-100 btn btn-lg btn-success" %>

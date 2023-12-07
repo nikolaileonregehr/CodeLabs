@@ -12,7 +12,12 @@ class GptChatroomsController < ApplicationController
   def create
     @gpt_chatroom = GptChatroom.new
     @gpt_chatroom.student_id = current_user.id
-    @gpt_chatroom.gpt_user_id = User.find_by(role: "user").id
+    user = User.find_by(role: "user")
+    if user
+      @gpt_chatroom.gpt_user_id = user.id
+    else
+      @gpt_chatroom.gpt_user_id = User.find_by(role: "teacher").id
+    end
     @gpt_chatroom.save
     redirect_to gpt_chatroom_path(@gpt_chatroom)
   end

@@ -1,7 +1,7 @@
 <div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-gpt-chatroom-subscription-chatroom-id-value="<%= gpt_chatroom.id %>"
-  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+  data-controller="gpt-chatroom-subscription"
+  data-gpt-chatroom-subscription-gpt-chatroom-id-value="<%= gpt_chatroom.id %>"
+  data-gpt-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
   <div class="messages" data-gpt-chatroom-subscription-target="messages">
     <% @gpt_chatroom.gpt_messages.each do |message| %>
