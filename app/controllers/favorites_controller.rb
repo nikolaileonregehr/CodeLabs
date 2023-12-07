@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = Favorite.all
+    @favorites = Favorite.where(user: current_user)
   end
 
   def new

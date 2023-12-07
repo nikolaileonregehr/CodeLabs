@@ -16,10 +16,15 @@ GptMessage.destroy_all
 Chatroom.destroy_all
 GptChatroom.destroy_all
 User.destroy_all
-owner = User.create!(email: "owner@owner.com", password: "123456", role: "teacher", first_name: "Owner", last_name: "owner")
-client = User.create!(email: "user@user.com", password: "123456", role: "student", first_name: "student", last_name: "castro")
-User.create!(email: "gpt@gpt.com", password: "123456", role: "gpt_user", first_name: "ChatGPT", last_name: "ChatGPT")
 
+fotocarla = URI.open('https://avatars.githubusercontent.com/u/56138978?v=4')
+fotoandre = URI.open('https://avatars.githubusercontent.com/u/80218755?v=4')
+carla = User.create!(email: "carla@lewagon.com", password: "123456", role: "teacher", first_name: "Carla", last_name: "Valdivia", address: 'Rio de Janeiro', status: "subscribed", country: 'Brazil')
+andre = User.create!(email: "andre@lewagon.com", password: "123456", role: "teacher", first_name: "Andre", last_name: "Menezes", address: 'Rio de Janeiro', status: "subscribed", country: 'Brazil')
+carla.photo.attach(io: fotocarla, filename: "carla.png", content_type: "image/png")
+andre.photo.attach(io: fotoandre, filename: "andre.png", content_type: "image/png")
+
+User.create!(email: "gpt@gpt.com", password: "123456", role: "gpt_user", first_name: "ChatGPT", last_name: "ChatGPT")
 # Courses
 # Course 1
 file1 = URI.open("https://apexensino.com.br/wp-content/uploads/2020/05/python-1280x640.jpg")
