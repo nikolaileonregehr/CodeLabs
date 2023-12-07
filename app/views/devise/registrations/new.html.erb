@@ -41,11 +41,10 @@
                           collection: ["Australia", "Brazil", "Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "Netherlands", "Poland", "Russia", "South Africa", "Spain", "Sweden", "Turkey", "UK", "USA", "Other"],
                           prompt: "Select a country" %>
             </div>
-            </div>
 
             <div class="form-actions p-4">
-              <%= f.button :submit, "Sign up", class:"btn btn-dark" %>
-            <%= render "devise/shared/links" %>
+              <%= f.submit "Sign up", class:"btn btn-dark" %>
+              <%= render "devise/shared/links" %>
             </div>
           <% end %>
         </div>
