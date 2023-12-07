@@ -31,9 +31,7 @@
     <%= yield %>
   </div>
   <% unless rendering_show_chapter %>
-    <footer class="footer">
-      <%= render "shared/footer" %>
-    </footer>
+    <%= hide_footer %>
   <% end %>
   </div>
   </body>

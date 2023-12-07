@@ -1,7 +1,12 @@
-.content,.row{height:100%}
+.content,.row {
+  height: 100%;
+}
 
-.board-container{box-sizing:border-box}
-.board{
+.board-container {
+  box-sizing: border-box;
+}
+
+.board {
   background-color: #cfd0d0;
   margin: 3px;
   border-radius: 10px;
@@ -33,15 +38,6 @@
 
 .green {
   background-color: lightgreen;
-}
-
-.btn-medium {
-  color: #999999;
-  border: 1px solid #999999;
-  padding: 15px 25px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
 }
 
 .btn-treehouse {
