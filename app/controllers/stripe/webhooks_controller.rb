@@ -2,7 +2,7 @@ class Stripe::WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def create
-    webhook_secret = 'whsec_BIXLpgktqEMWZvUPLXwPiDDYbkiUBZkN'
+    webhook_secret = 'whsec_n0Ioa2zBh6XvsgjmozHz6dhZpAIBf2S6'
     payload = request.body.read
 
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
