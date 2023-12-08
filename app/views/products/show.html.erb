@@ -18,6 +18,8 @@
         <% else %>
         <% if @product.chapters.exists? && @user.status == "subscribed" %>
           <div class="studying me-3"> <%= link_to "Start Studying", product_chapter_path(@product, @product.chapters.first), class: "btn btn-info" %> </div>
+        <% elsif user_signed_in? && @user.status == "unsubscribed" %>
+          <%= button_to "Subscribe to Start", stripe_checkout_path(price_id: @prices[0].id), data: {turbo: 'false'}, class: "btn btn-warning mb-3 me-3" %>
         <% end %>
           <div class="favorite">
             <% thisfavorite = Favorite.find_by(user: current_user, product: @product) %>
@@ -55,7 +57,14 @@
             <% end %>
           <% end %>
           <% else %>
-            <p class="text-center">You need to be logged in and subscribed to access the chapters. <%= link_to "Login", new_user_session_path %> | <%= link_to "Subscribe now", subscribe_path %></p>
+            <% @product.chapters.each do |chapter| %>
+            <%= link_to product_chapter_path(@product, chapter), class: "chapter-link" do %>
+              <button class="btn chapter-name">
+                <p class="chapter-title"><strong><%= chapter.title %></strong></p>
+                <p class="chapter-description"><%= chapter.description %></p>
+              </button>
+            <% end %>
+          <% end %>
           <% end %>
         <% end %>
       </div>
