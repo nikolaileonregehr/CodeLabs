@@ -45,11 +45,17 @@
           <% end %>
         <% else %>
           <h3><strong>Chapters</strong></h3>
-          <% @product.chapters.each do |chapter| %>
-            <button class="btn chapter-name">
-              <p class="chapter-title"><strong><%= chapter.title %></strong></p>
-              <p class="chapter-description"><%= chapter.description %></p>
-            </button>
+          <% if user_signed_in? %>
+            <% @product.chapters.each do |chapter| %>
+            <%= link_to product_chapter_path(@product, chapter), class: "chapter-link" do %>
+              <button class="btn chapter-name">
+                <p class="chapter-title"><strong><%= chapter.title %></strong></p>
+                <p class="chapter-description"><%= chapter.description %></p>
+              </button>
+            <% end %>
+          <% end %>
+          <% else %>
+            <p class="text-center">You need to be logged in and subscribed to access the chapters. <%= link_to "Login", new_user_session_path %> | <%= link_to "Subscribe now", subscribe_path %></p>
           <% end %>
         <% end %>
       </div>
