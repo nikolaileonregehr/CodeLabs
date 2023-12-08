@@ -18,10 +18,10 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{gpt_chatroom.id}",
+      placeholder: "Type here...",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3 me-2" %>
+    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3 me-2 custom-width-button" %>
     <%= link_to "Talk to teacher", chatrooms_path, class: "btn btn-secondary btn-sm mb-3 me-2 d-flex align-items-center", data: { turbo_method: "post" } %>
   <% end %>
 </div>

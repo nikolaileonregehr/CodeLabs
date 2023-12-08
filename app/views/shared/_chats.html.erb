@@ -18,9 +18,9 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.id}",
+      placeholder: "Type here...",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3" %>
+    <%= f.submit "Send", class: "btn btn-primary btn-sm mb-3 custom-width-button" %>
   <% end %>
 </div>
