@@ -11,25 +11,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
           <li>
-            <%= link_to "Explore Courses", products_path, class:"btn btn-outline-secondary" %>
+            <%= link_to "Explore Courses", products_path, class:"btn btn-outline-secondary me-3", style: "width: 200px; height: 35´6px;" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item active">
-              <%= link_to "Home", root_path, class: "nav-link", style:"margin-right: 10px;" %>
+              <%= link_to root_path, class: "nav-link", style:"margin-right: 10px;" do %>
+              <i class="fa-solid fa-house"></i>
+              <% end %>
             </li>
             <li class="nav-item dropdown">
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if current_user.photo.key %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar rounded-circle", alt: "dropdown menu", style: "width: 40px; height: 40px; border-radius: 50%;" %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar rounded-circle me-3", alt: "dropdown menu", style: "width: 40px; height: 40px; border-radius: 50%;" %>
           <% else %>
-            <%= image_tag "default_image.webp", class: "avatar rounded-circle", alt: "dropdown menu", style: "width: 40px; height: 40px; border-radius: 50%;" %>
+            <%= image_tag "default_image.webp", class: "avatar rounded-circle me-3", alt: "dropdown menu", style: "width: 40px; height: 40px; border-radius: 50%;" %>
           <% end %>
               </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Profile", profile_path, class: "dropdown-item" %>
-                  <%= link_to "My Fav Courses", favorites_path, class: "dropdown-item" %>
-                  <%= link_to "AI chat", gptchats_path, class: "dropdown-item" %>
-                  <%= link_to "Teacher chats", chats_path, class: "dropdown-item" %>
+                  <%= link_to "Favorite Courses", favorites_path, class: "dropdown-item" %>
+                  <%= link_to "AI Chat", gptchats_path, class: "dropdown-item" %>
+                  <%= link_to "Teacher Chat", chats_path, class: "dropdown-item" %>
                   <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
                 </div>
             </li>
